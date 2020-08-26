@@ -1,2 +1,1 @@
-# EcUtbildningDevOps
-Repo for studies at EC Utbildning DevOps
+# DevOps repo for studies at EC Utbildning 2020-2022
