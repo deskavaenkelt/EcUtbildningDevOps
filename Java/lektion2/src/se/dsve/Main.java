@@ -24,6 +24,9 @@ public class Main {
         exercise15();
         exercise16();
         exercise17();
+        exercise18();
+        exercise19();
+        exercise20();
     }
 
     private static void addALine() {
@@ -165,7 +168,7 @@ public class Main {
         double width = 5.5;
         double height = 8.5;
 
-        double perimeter = (width +height) * 2;
+        double perimeter = (width + height) * 2;
         double area = width * height;
         System.out.println("perimeter = " + perimeter);
         System.out.println("area = " + area);
@@ -174,24 +177,72 @@ public class Main {
 
     private static void exercise14() {
         System.out.println("exercise14");
-        System.out.println("x");
+        System.out.println(" * * * * *  ==================================");
+        System.out.println("* * * * * * ==================================");
+        System.out.println(" * * * * *  ==================================");
+        System.out.println("* * * * * * ==================================");
+        System.out.println(" * * * * *  ==================================");
+        System.out.println("* * * * * * ==================================");
+        System.out.println(" * * * * *  ==================================");
+        System.out.println("* * * * * * ==================================");
+        System.out.println("==============================================");
+        System.out.println("==============================================");
+        System.out.println("==============================================");
+        System.out.println("==============================================");
+        System.out.println("==============================================");
+        System.out.println("==============================================");
         addALine();
     }
 
     private static void exercise15() {
         System.out.println("exercise15");
-        System.out.println("x");
+        int var1 = 5;
+        int var2 = 4;
+        int temp = var1;
+
+        System.out.println("var1 = " + var1);
+        System.out.println("var2 = " + var2);
+
+        System.out.println("swap");
+        var1 = var2;
+        var2 = temp;
+
+        System.out.println("var1 = " + var1);
+        System.out.println("var2 = " + var2);
+
         addALine();
     }
 
     private static void exercise16() {
         System.out.println("exercise16");
-        System.out.println("x");
+        System.out.println(" +\" \"\"\"\"+");
+        System.out.println("[| o o |]");
+        System.out.println(" |  ^  |");
+        System.out.println(" | '-' |");
+        System.out.println(" +-----+");
         addALine();
     }
 
     private static void exercise17() {
         System.out.println("exercise17");
+        System.out.println("x");
+        addALine();
+    }
+
+    private static void exercise18() {
+        System.out.println("exercise18");
+        System.out.println("x");
+        addALine();
+    }
+
+    private static void exercise19() {
+        System.out.println("exercise19");
+        System.out.println("x");
+        addALine();
+    }
+
+    private static void exercise20() {
+        System.out.println("exercise20");
         System.out.println("x");
         addALine();
     }
