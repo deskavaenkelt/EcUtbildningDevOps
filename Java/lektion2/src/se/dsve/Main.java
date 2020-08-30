@@ -7,24 +7,24 @@ public class Main {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        exercise1();
-        exercise2();
-        exercise3();
-        exercise4();
-        exercise5();
-        exercise6();
-        exercise7();
-        exercise8();
-        exercise9();
-        exercise10();
-        exercise11();
-        exercise12();
-        exercise13();
-        exercise14();
-        exercise15();
-        exercise16();
-        exercise17();
-        exercise18();
+//        exercise1();
+//        exercise2();
+//        exercise3();
+//        exercise4();
+//        exercise5();
+//        exercise6();
+//        exercise7();
+//        exercise8();
+//        exercise9();
+//        exercise10();
+//        exercise11();
+//        exercise12();
+//        exercise13();
+//        exercise14();
+//        exercise15();
+//        exercise16();
+//        exercise31();
+//        exercise32();
         exercise19();
         exercise20();
     }
@@ -196,19 +196,19 @@ public class Main {
 
     private static void exercise15() {
         System.out.println("exercise15");
-        int var1 = 5;
-        int var2 = 4;
-        int temp = var1;
+        int a = 5;
+        int b = 4;
 
-        System.out.println("var1 = " + var1);
-        System.out.println("var2 = " + var2);
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
 
         System.out.println("swap");
-        var1 = var2;
-        var2 = temp;
+        a = a + b;
+        b = a - b;
+        a = a - b;
 
-        System.out.println("var1 = " + var1);
-        System.out.println("var2 = " + var2);
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
 
         addALine();
     }
@@ -223,20 +223,51 @@ public class Main {
         addALine();
     }
 
-    private static void exercise17() {
-        System.out.println("exercise17");
-        System.out.println("x");
+    private static void exercise31() {
+        System.out.println("exercise31");
+        String javaVersion = System.getProperty("java.version");
+        String javaRuntimeVersion = System.getProperty("java.runtime.version");
+        String javaHome = System.getProperty("java.home");
+        String javaVendor = System.getProperty("java.vendor");
+        String javaVendorUrl = System.getProperty("java.vendor.url");
+        String javaClassPath = System.getProperty("java.class.path");
+
+        System.out.println("Java Version: " + javaVersion);
+        System.out.println("Java Runtime Version: " + javaRuntimeVersion);
+        System.out.println("Java Home: " + javaHome);
+        System.out.println("Java Vendor: " + javaVendor);
+        System.out.println("Java Vendor Url: " + javaVendorUrl);
+        System.out.println("Java Class Path: " + javaClassPath);
+
         addALine();
     }
 
-    private static void exercise18() {
-        System.out.println("exercise18");
-        System.out.println("x");
+    private static void exercise32() {
+        System.out.println("exercise32");
+        System.out.println("Enter 2 numbers to compare");
+        int num1;
+        num1 = returnNumber();
+        int num2;
+        num2 = returnNumber();
+
+        if (num1 == num2) {
+            System.out.println("Numbers are equal");
+        } else if (num1 < num2) {
+            System.out.println(num1 + " < " + num2);
+        } else {
+            System.out.println(num1 + " > " + num2);
+        }
+
+
         addALine();
     }
+    private static int returnNumber() {
+        System.out.print("Enter a number: ");
+        return scan.nextInt();
+    }
 
-    private static void exercise19() {
-        System.out.println("exercise19");
+    private static void exercise33() {
+        System.out.println("exercise33");
         System.out.println("x");
         addALine();
     }
