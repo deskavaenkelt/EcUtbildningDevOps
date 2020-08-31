@@ -73,6 +73,7 @@ Else you can add this line `"java.home": "/usr/lib/jvm/java-11-amazon-corretto/"
 When done it should lock something like this:
 ![settings_java_home_contains]
 
+### Restart Visual Studio Code!
 
 # Run a java program
 Create a new file in Visual Studio Code.
@@ -86,16 +87,16 @@ Run program by clicking `F5` on keybord or click `Run` between row 3 and 4.
 
 
 
-[java_version_output]: java_version.png "Java version output"
-[choose_java_version]: choose_java_version.png "Choose Java version"
-[choose_javac_version]: choose_javac_version.png "Choose Javac version"
-[sudo_nano_etc_enviroment]: sudo_nano_etc_enviroment.png "Sudo   Nano /etc/enviroment"
+[java_version_output]: img/java_version.png "Java version output"
+[choose_java_version]: img/choose_java_version.png "Choose Java version"
+[choose_javac_version]: img/choose_javac_version.png "Choose Javac version"
+[sudo_nano_etc_enviroment]: img/sudo_nano_etc_enviroment.png "Sudo   Nano /etc/enviroment"
 
-[vscode_java_extension_pack]: vscode_java_extension_pack.png "Java Extension Pack"
-[vscode_preferences_settings]: vscode_preferences_settings.png "Settings in VS Code"
-[settings_java_home]: settings_java_home.png "Settings java.home"
-[settings_java_home_contains]: settings_java_home_contains.png "settings.json"
+[vscode_java_extension_pack]: img/vscode_java_extension_pack.png "Java Extension Pack"
+[vscode_preferences_settings]: img/vscode_preferences_settings.png "Settings in VS Code"
+[settings_java_home]: img/settings_java_home.png "Settings java.home"
+[settings_java_home_contains]: img/settings_java_home_contains.png "settings.json"
 
-[vscode_new_file]: vscode_new_file.png "vscode_new_file"
-[vscode_hello_source]: vscode_hello_source.png "vscode_hello_source"
-[vscode_hello_run]: vscode_hello_run.png "vscode_hello_run"
+[vscode_new_file]: img/vscode_new_file.png "vscode_new_file"
+[vscode_hello_source]: img/vscode_hello_source.png "vscode_hello_source"
+[vscode_hello_run]: img/vscode_hello_run.png "vscode_hello_run"
