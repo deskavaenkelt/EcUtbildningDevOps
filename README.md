@@ -12,3 +12,8 @@ Introduktion till Java
 - Syntax
 - Variabler
 - Main funktionen
+
+## Lektion 3
+- Operatorer
+
+
