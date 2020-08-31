@@ -9,6 +9,15 @@ package se.dsve.controller;
 \ \___,_\/\____/\ \___/ \ \____\
  \/__,_ /\/___/  \/__/   \/____/
 
+System.out.println("  __");
+System.out.println(" /\ \");
+System.out.println(" \_\ \    ____  __  __     __");
+System.out.println(" /'_` \  /',__\/\ \/\ \  /'__`\");
+System.out.println("/\ \L\ \/\__, `\ \ \_/ |/\  __/");
+System.out.println("\ \___,_\/\____/\ \___/ \ \____\");
+System.out.println(" \/__,_ /\/___/  \/__/   \/____/");
+System.out.println();
+
 */
 
 import se.dsve.model.Calculator;
@@ -30,6 +39,8 @@ public class Controller {
     private final Calculator calculator = new Calculator();
 
     public void start() {
+        UserInterfaceCli.logo();
+
         while (PLAYING) {
             UserInterfaceCli.menu();
             int input = UserInput.getNumberInt();

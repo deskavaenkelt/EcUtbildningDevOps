@@ -73,6 +73,17 @@ public class UserInterfaceCli {
         System.out.println("See you later alligator");
     }
 
+    public static void logo() {
+        System.out.println("  __");
+        System.out.println(" /\\ \\");
+        System.out.println(" \\_\\ \\    ____  __  __     __");
+        System.out.println(" /'_` \\  /',__\\/\\ \\/\\ \\  /'__`\\");
+        System.out.println("/\\ \\L\\ \\/\\__, `\\ \\ \\_/ |/\\  __/");
+        System.out.println("\\ \\___,_\\/\\____/\\ \\___/ \\ \\____\\");
+        System.out.println(" \\/__,_ /\\/___/  \\/__/   \\/____/");
+        System.out.println();
+    }
+
     public static void art() {
         System.out.println("                          _");
         System.out.println("              .----------/ |<=== floppy disk");
