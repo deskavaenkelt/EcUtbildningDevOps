@@ -64,6 +64,8 @@ Open settings
 serach for `java.home` click on `Edit in settings.json`
 ![settings_java_home]
 
+You can see the path to all installed Java Versions with the command: `ll /usr/lib/jvm/`
+
 If you have the line `"java.home": "",` add `/usr/lib/jvm/java-11-amazon-corretto/` inside the `""`
 
 Else you can add this line `"java.home": "/usr/lib/jvm/java-11-amazon-corretto/",`
