@@ -27,22 +27,25 @@ public class Main {
 
     public static void main(String[] args) {
         viewLogo();
-        start();
+        startCalculator();
         closeScanner();
     }
 
-    static void start() {
+    // ###################
+    // # Calculator Loop #
+    // ###################
+    static void startCalculator() {
         while (PLAYING) {
             viewMenu();
             int input = getNumberInt();
-            choiceInMenu(input);
+            choiceMenu(input);
         }
     }
 
     // ###################
     // # User Navigation #
     // ###################
-    static void choiceInMenu(int input) {
+    static void choiceMenu(int input) {
         switch (input) {
             case 1:
                 logicAddition();
@@ -60,7 +63,7 @@ public class Main {
                 exit();
                 break;
             default:
-                start();
+                startCalculator();
                 break;
         }
     }
@@ -68,9 +71,15 @@ public class Main {
     // ##################
     // #     Logic      #
     // ##################
-    static double addOneNumber() {
+    static double enterANumber() {
         viewEnterNumber();
         return getNumberDouble();
+    }
+
+    static double[] enterNumberInputs() {
+        double firstNumber = enterANumber();
+        double secondNumber = enterANumber();
+        return new double[]{firstNumber, secondNumber};
     }
 
     static void printResult(double firstNumber, double secondNumber, String operator, double result) {
@@ -83,34 +92,30 @@ public class Main {
 
     static void logicAddition() {
         viewAddition();
-        double firstNumber = addOneNumber();
-        double secondNumber = addOneNumber();
-        double result = addition(firstNumber, secondNumber);
-        printResult(firstNumber, secondNumber, " + ", result);
+        double[] doubleInputs = enterNumberInputs();
+        double result = addition(doubleInputs[0], doubleInputs[1]);
+        printResult(doubleInputs[0], doubleInputs[1], " + ", result);
     }
 
     static void logicSubtraction() {
         viewSubtraction();
-        double firstNumber = addOneNumber();
-        double secondNumber = addOneNumber();
-        double result = subtraction(firstNumber, secondNumber);
-        printResult(firstNumber, secondNumber, " - ", result);
+        double[] doubleInputs = enterNumberInputs();
+        double result = subtraction(doubleInputs[0], doubleInputs[1]);
+        printResult(doubleInputs[0], doubleInputs[1], " - ", result);
     }
 
     static void logicMultiplication() {
         viewMultiplication();
-        double firstNumber = addOneNumber();
-        double secondNumber = addOneNumber();
-        double result = multiplication(firstNumber, secondNumber);
-        printResult(firstNumber, secondNumber, " * ", result);
+        double[] doubleInputs = enterNumberInputs();
+        double result = multiplication(doubleInputs[0], doubleInputs[1]);
+        printResult(doubleInputs[0], doubleInputs[1], " * ", result);
     }
 
     static void logicDivision() {
         viewDivision();
-        double firstNumber = addOneNumber();
-        double secondNumber = addOneNumber();
-        double result = division(firstNumber, secondNumber);
-        printResult(firstNumber, secondNumber, " / ", result);
+        double[] doubleInputs = enterNumberInputs();
+        double result = division(doubleInputs[0], doubleInputs[1]);
+        printResult(doubleInputs[0], doubleInputs[1], " / ", result);
     }
 
     static void exit() {
