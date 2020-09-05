@@ -41,35 +41,20 @@ public class UserInput {
     public static int getNumberInt() {
         return readNumberInteger();
     }
-    // Private function
+
     private static int readNumberInteger() {
-        // Read input as a string
-        String input = userInput();
-
-        // return -1 if not an integer
-        int number = -1;
-
-        // Call isInteger to check if input is a number, catch exception
-        if (isInteger(input)) {
-            // If true parseInt
-            number = Integer.parseInt(input);
-        }
-        return number;
+        String stringInput = userInput();
+        return parseStringToInt(stringInput);
     }
 
-    // Check if input is an integer
-    static boolean isInteger(String passedString) {
-        // Validate so that input is an int
-        boolean isValidInteger = false;
+    // Check if input is an integer (Package Private)
+    static int parseStringToInt(String passedString) {
         try {
-            Integer.parseInt(passedString);        // passedString is a valid integer
-            isValidInteger = true;
-        }
-        catch (NumberFormatException ex) {
-            // passedString is not an integer
+            return Integer.parseInt(passedString);
+        } catch (NumberFormatException ex) {
             System.out.println("Enter a valid number!");
+            return -1;
         }
-        return isValidInteger;
     }
 
     // ************
@@ -80,34 +65,19 @@ public class UserInput {
     }
     // Private function
     private static double readNumberDouble() {
-        // Read input as a string
-        String input = userInput();
-
-        // return -1 if not an integer
-        double number = -1;
-
-        // Call isInteger to check if input is a number, catch exception
-        if (isDouble(input)) {
-            // If true parseInt
-            number = Double.parseDouble(input);
-        }
-        return number;
+        String stringInput = userInput();
+        return parseStringToDouble(stringInput);
     }
 
-    // Check if input is an double
-    static boolean isDouble(String passedString) {
-        boolean isValidDouble = false;
+    // Check if input is an double (Package Private)
+    static double parseStringToDouble(String passedString) {
         try {
-            Double.parseDouble(passedString);
-            isValidDouble = true;
-        }
-        catch (NumberFormatException ex) {
-            // passedString is not an double
+            return Double.parseDouble(passedString);
+        } catch (NumberFormatException ex) {
             System.out.println("Not a number!");
+            return -1;
         }
-        return isValidDouble;
     }
-
 
     // Close scanner
     public static void closeScanner() {

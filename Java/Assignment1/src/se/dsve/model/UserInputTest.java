@@ -30,10 +30,10 @@ class UserInputTest {
     }
 
     @Test
-    void isInteger() {
-        assertTrue(UserInput.isInteger("12"));
-        assertFalse(UserInput.isInteger("1.2"));
-        assertFalse(UserInput.isInteger("Darkwing Duck"));
+    void parseStringToInt() {
+        assertEquals(12, UserInput.parseStringToInt("12"));
+        assertEquals(-1, UserInput.parseStringToInt("1.2"));
+        assertEquals(-1, UserInput.parseStringToInt("Darkwing Duck"));
     }
 
     @Disabled
@@ -43,9 +43,9 @@ class UserInputTest {
     }
 
     @Test
-    void isDouble() {
-        assertTrue(UserInput.isDouble("1.2"));
-        assertFalse(UserInput.isDouble("Darkwing Duck"));
+    void parseStringToDouble() {
+        assertEquals(1.2, UserInput.parseStringToDouble("1.2"));
+        assertEquals(-1, UserInput.parseStringToDouble("Darkwing Duck"));
     }
 
     @Disabled
