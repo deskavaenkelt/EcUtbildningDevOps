@@ -77,9 +77,6 @@ public class Controller {
                 start();
                 break;
         }
-
-//        userInterface.pressEnter();
-//        userInput.getString();
     }
 
 
