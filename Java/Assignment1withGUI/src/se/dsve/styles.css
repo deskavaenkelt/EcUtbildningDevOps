@@ -1,0 +1,61 @@
+/*
+  __
+ /\ \
+ \_\ \    ____  __  __     __
+ /'_` \  /',__\/\ \/\ \  /'__`\
+/\ \L\ \/\__, `\ \ \_/ |/\  __/
+\ \___,_\/\____/\ \___/ \ \____\
+ \/__,_ /\/___/  \/__/   \/____/
+
+*/
+
+.root {
+    -fx-background-color: #3c3f41;
+}
+
+.button {
+    -fx-scale-x: 1.5;
+    -fx-scale-y: 1.5;
+}
+
+.text-field {
+    -fx-scale-x: 1.5;
+    -fx-scale-y: 1.5;
+    -fx-background-color: azure;
+}
+
+#buttonAddition {
+    -fx-background-color: #964020;
+}
+
+#buttonSubtraction {
+    -fx-background-color: #964020;
+}
+
+#buttonMultiply {
+    -fx-background-color: #964020;
+}
+
+#buttonDivision {
+    -fx-background-color: #964020;
+}
+
+#buttonComma {
+    -fx-background-color: #F19801;
+}
+
+#buttonClear {
+    -fx-background-color: #EE4336;
+    -fx-text-fill: white;
+}
+
+#buttonResult {
+    -fx-background-color: #0a372d;
+    -fx-text-fill: white;
+}
+
+#dsve {
+    -fx-font-size: 1.5em;
+    -fx-text-fill: #494c4f;
+    -fx-opacity: 50%;
+}
