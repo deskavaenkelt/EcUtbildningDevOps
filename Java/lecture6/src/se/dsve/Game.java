@@ -18,9 +18,9 @@ package se.dsve;
 
 public class Game {
 
-    private String characterName;
-    private String weaponName;
-    private int weaponDamage;
+    private final String characterName;
+    private final String weaponName;
+    private final int weaponDamage;
     private int hp;
 
     public Game(String characterName, String weaponName, int weaponDamage, int hp) {

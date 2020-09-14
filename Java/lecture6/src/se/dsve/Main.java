@@ -1,5 +1,21 @@
 package se.dsve;
 
+/**
+ * __
+ * /\ \
+ * \_\ \    ____  __  __     __
+ * /'_` \  /',__\/\ \/\ \  /'__`\
+ * /\ \L\ \/\__, `\ \ \_/ |/\  __/
+ * \ \___,_\/\____/\ \___/ \ \____\
+ * \/__,_ /\/___/  \/__/   \/____/
+ * lecture6
+ *
+ * @author Lars Strömberg
+ * @version 1.0
+ * @since {2020-09-14}.
+ * https://github.com/deskavaenkelt/
+ */
+
 public class Main {
 
     public static void main(String[] args) {
