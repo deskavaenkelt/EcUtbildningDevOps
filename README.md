@@ -5,7 +5,7 @@ Installera:
 - Java på Linux
 - Stöd för Java i VSCODE
 - IntelliJ IDEA Community Edition
-[Java Guide here](../blob/tree/master/Java/Tutorials/README.md)
+[Java Guide here](../blob/master/Java/Tutorials/README.md)
 
 ## Lektion 1
 Tittat på arbetsflöden och verktyg.
