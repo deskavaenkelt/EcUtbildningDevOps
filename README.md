@@ -1,5 +1,12 @@
 # DevOps repo for studies at EC Utbildning 2020-2022
 
+## Tutorials
+Installera:
+- Java på Linux
+- Stöd för Java i VSCODE
+- IntelliJ IDEA Community Edition
+[Java Guide here](Java/Tutorials)
+
 ## Lektion 1
 Tittat på arbetsflöden och verktyg.
 - VirtualBox med Ubuntu
