@@ -14,8 +14,8 @@ public class Game {
     }
 
     public void beingAttacked(String defenderName, String attackerName, int attackerWeaponDamage, String attackerWeaponName) {
-        if (hp <= 0 || attackerWeaponName == "Excalibur") {
-            System.err.println("YOU CANNOT ATTACK");
+        if (hp <= 0) {
+            System.out.println("YOU CANNOT ATTACK, BECAUSE YOU ARE DEAD ;)");
         } else {
             /* System.err.println("WILD " + attackerName + " APPEARS!"); */
             System.out.println(attackerName + " STRIKES " + defenderName + " WITH A " + attackerWeaponName + " IT DOES " + attackerWeaponDamage + " DAMAGE");
