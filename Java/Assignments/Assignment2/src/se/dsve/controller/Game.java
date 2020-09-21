@@ -23,57 +23,130 @@ public class Game {
     private final int EXCALIBUR_WEAPON_INDEX = 0;
 
     public void start() {
-        gameLogic.initialSetup();
+        GameLogic.initialSetup();
         gameLogic.printAllWeapons();
         gameLogic.printAllCharacters();
+        printLineSeparator();
+
+
+        whatCharacterHasACertainWeaponEquipped();
 
         printArthurStats();
+        printTheBeastStats();
+
         arthurAttackTheBeast();
         theBeastDrinksAPotion();
+
+        theBeastSearchForAWeapon();
         theBeastAttacksArthur();
         arthurDrinksPotionFourTimes();
+
         arthurSearchForExcalibur();
         arthurEquipsExcalibur();
+
         arthurAttackTheBeast();
+    }
+
+    private void printLineSeparator() {
+        System.out.println("----------------------------------------------------------------------------");
+    }
+
+    private void whatCharacterHasACertainWeaponEquipped() {
+        String name = "Bastard Sword";
+        String message = GameLogic.witchCharacterHasTheWeaponEquipped(name);
+        System.out.println(message);
+
+        name = "Excalibur";
+        message = GameLogic.witchCharacterHasTheWeaponEquipped(name);
+        System.out.println(message);
+
+        name = "Magic Wand";
+        message = GameLogic.witchCharacterHasTheWeaponEquipped(name);
+        System.out.println(message);
+        printLineSeparator();
     }
 
     private void printArthurStats() {
-        gameLogic.printACharactersStats(ARTHUR_CHARACTER_INDEX);
-        System.out.println("--------------------------------------");
+        System.out.println(Print.characterStats(ARTHUR_CHARACTER_INDEX));
+        printLineSeparator();
+    }
+
+    private void printTheBeastStats() {
+        System.out.println(Print.characterStats(THE_BEAST_CHARACTER_INDEX));
+        printLineSeparator();
     }
 
     private void arthurAttackTheBeast() {
-        gameLogic.someoneAttacks(ARTHUR_CHARACTER_INDEX, THE_BEAST_CHARACTER_INDEX);
-    }
-
-    private void theBeastAttacksArthur() {
-        gameLogic.someoneAttacks(THE_BEAST_CHARACTER_INDEX, ARTHUR_CHARACTER_INDEX);
+        String message = GameLogic.someoneAttacks(ARTHUR_CHARACTER_INDEX, THE_BEAST_CHARACTER_INDEX);
+        System.out.println(message);
+        printLineSeparator();
     }
 
     private void theBeastDrinksAPotion() {
-        gameLogic.drinkAPotion(THE_BEAST_CHARACTER_INDEX);
+        String message = GameLogic.drinkAPotion(THE_BEAST_CHARACTER_INDEX);
+        System.out.println(message);
+        printLineSeparator();
+    }
+
+    private void theBeastSearchForAWeapon() {
+        System.out.println("The Beast searches for a new weapon...");
+        String name = "Bastard Sword";
+        boolean theBeastFindWeapon = GameLogic.searchWeapon(name);
+
+        System.out.print("Arthur ");
+        if (theBeastFindWeapon) {
+            System.out.println("found " + name + " !");
+        } else {
+            System.out.println("didn't found " + name + " !");
+        }
+        printLineSeparator();
+    }
+
+    private void theBeastAttacksArthur() {
+        String message = GameLogic.someoneAttacks(THE_BEAST_CHARACTER_INDEX, ARTHUR_CHARACTER_INDEX);
+        System.out.println(message);
+        printLineSeparator();
     }
 
     private void arthurDrinksPotionFourTimes() {
         for (int i = 0; i < 4; i++) {
-            gameLogic.drinkAPotion(ARTHUR_CHARACTER_INDEX);
+            String message = GameLogic.drinkAPotion(ARTHUR_CHARACTER_INDEX);
+            System.out.println(message);
         }
+        printLineSeparator();
     }
 
     private void arthurSearchForExcalibur() {
         System.out.println("Arthur searches for a new weapon...");
+        String weaponName = GameLogic.getWeaponName(EXCALIBUR_WEAPON_INDEX);
+        boolean arthurFindWeapon = GameLogic.searchWeapon(weaponName);
+
         System.out.print("Arthur ");
-        String weaponName = gameLogic.getWeaponName(EXCALIBUR_WEAPON_INDEX);
-        gameLogic.searchWeapon(weaponName);
-        System.out.println("--------------------------------------");
+        if (arthurFindWeapon) {
+            System.out.println("found " + weaponName + " !");
+        } else {
+            System.out.println("didn't found " + weaponName + " !");
+        }
+        printLineSeparator();
     }
 
     private void arthurEquipsExcalibur() {
-        gameLogic.printWhatWeaponACharacterHave(ARTHUR_CHARACTER_INDEX);
+        printEquippedWeapon(ARTHUR_CHARACTER_INDEX);
+
+        arthurChangeWeapon();
+
+        printEquippedWeapon(ARTHUR_CHARACTER_INDEX);
+        printLineSeparator();
+    }
+
+    private void arthurChangeWeapon() {
         System.out.println("Arthur throws his old weapon on the ground and equips Excalibur");
-        String weaponName = gameLogic.getWeaponName(EXCALIBUR_WEAPON_INDEX);
-        gameLogic.equipCharacterWithNewWeapon(ARTHUR_CHARACTER_INDEX, weaponName);
-        gameLogic.printWhatWeaponACharacterHave(ARTHUR_CHARACTER_INDEX);
-        System.out.println("--------------------------------------");
+        String weaponName = GameLogic.getWeaponName(EXCALIBUR_WEAPON_INDEX);
+        String message = GameLogic.equipCharacterWithNewWeapon(ARTHUR_CHARACTER_INDEX, weaponName);
+        System.out.println(message);
+    }
+
+    private void printEquippedWeapon(int characterIndex) {
+        System.out.println(Print.equippedWeapon(characterIndex));
     }
 }

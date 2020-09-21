@@ -23,11 +23,14 @@ import java.util.List;
  */
 
 class GameLogic {
-    // ####################################
-    // #   Weapon And Character section   #
-    // ####################################
-    ArrayList<Weapon> weaponsList = new ArrayList<>();
-    ArrayList<Character> charactersList = new ArrayList<>();
+    // Weapon And Character section
+    static ArrayList<Weapon> weaponsList;
+    static ArrayList<Character> charactersList;
+
+    static void createArrayLists() {
+        weaponsList = new ArrayList<>();
+        charactersList = new ArrayList<>();
+    }
 
     List<Weapon> getWeaponsList() {
         return weaponsList;
@@ -37,15 +40,15 @@ class GameLogic {
         return charactersList;
     }
 
-    void addWeapon(String weaponName, int weaponDamage, int weaponWear) {
+    static void addWeapon(String weaponName, int weaponDamage, int weaponWear) {
         weaponsList.add(new Weapon(weaponName, weaponDamage, weaponWear));
     }
 
-    void addCharacter(String characterName, int equippedWeapon) {
+    static void addCharacter(String characterName, int equippedWeapon) {
         charactersList.add(new Character(characterName, equippedWeapon, 100));
     }
 
-    void createWeaponList() {
+    static void fillWeaponList() {
         addWeapon("Excalibur", 120, 0);
         addWeapon("Magic Wand", 90, 0);
         addWeapon("Two Handed sword", 75, 0);
@@ -54,16 +57,17 @@ class GameLogic {
         addWeapon("Sword", 20, 50);
     }
 
-    void createCharacterList() {
+    static void fillCharacterList() {
         addCharacter("Arthur", 5);
         addCharacter("Merlin", 1);
-        addCharacter("Judas", weaponsList.size());
+        addCharacter("Judas", weaponsList.size() - 1);
         addCharacter("The Beast", 2);
     }
 
-    void initialSetup() {
-        createWeaponList();
-        createCharacterList();
+    static void initialSetup() {
+        createArrayLists();
+        fillWeaponList();
+        fillCharacterList();
     }
 
     void printAllWeapons() {
@@ -78,85 +82,103 @@ class GameLogic {
         }
     }
 
-    // ####################################
-    // #      Return different stats      #
-    // ####################################
+    // Return different stats
 
-    void printACharactersStats(int characterIndex) {
-        String characterName = getCharacterName(characterIndex);
-        System.out.println(characterName + "'s stats");
-        printWhatWeaponACharacterHave(characterIndex);
-        System.out.println(characterName + "'s HP = " + getCurrentHp(characterIndex));
-    }
+//    static String[] returnACharactersStats(int characterIndex) {
+//        String[] characterStats = new String[3];
+//        characterStats[0] = getCharacterName(characterIndex);
+//        characterStats[1] = currentlyEquippedWeapon(characterIndex);
+//        characterStats[2] = Integer.toString(getCurrentHp(characterIndex));
+//        return characterStats;
+//    }
 
-    void printWhatWeaponACharacterHave(int characterIndex) {
-        String characterName = getCharacterName(characterIndex);
-        System.out.println(characterName + "'s weapon name is: " + currentlyEquippedWeapon(characterIndex));
-    }
+//    void printACharactersStats(int characterIndex) {
+//        String characterName = getCharacterName(characterIndex);
+//        System.out.println(characterName + "'s stats");
+//        printWhatWeaponACharacterHave(characterIndex);
+//        System.out.println(characterName + "'s HP = " + getCurrentHp(characterIndex));
+//    }
 
-    String currentlyEquippedWeapon(int characterIndex) {
+//    void printWhatWeaponACharacterHave(int characterIndex) {
+//        String characterName = getCharacterName(characterIndex);
+//        System.out.println(characterName + "'s weapon name is: " + currentlyEquippedWeapon(characterIndex));
+//    }
+
+    static String currentlyEquippedWeapon(int characterIndex) {
         int indexOfEquippedWeapon = charactersList.get(characterIndex).getEquippedWeapon();
         return getWeaponName(indexOfEquippedWeapon);
     }
 
-    String getCharacterName(int characterIndex) {
+    static String getCharacterName(int characterIndex) {
         return charactersList.get(characterIndex).getCharacterName();
     }
 
-    String getWeaponName(int weaponIndex) {
+    static String getWeaponName(int weaponIndex) {
         return weaponsList.get(weaponIndex).getWeaponName();
     }
 
-    int getWeaponDamage(int attackerIndex) {
+    static int getWeaponDamage(int attackerIndex) {
         return weaponsList.get(getIndexOfEquippedWeapon(attackerIndex)).getWeaponDamage();
     }
 
-    int getIndexOfEquippedWeapon(int attackerIndex) {
+    static int getIndexOfEquippedWeapon(int attackerIndex) {
         return charactersList.get(attackerIndex).getEquippedWeapon();
     }
 
-    int getCurrentHp(int characterIndex) {
+    static int getCurrentHp(int characterIndex) {
         return charactersList.get(characterIndex).getHp();
     }
 
-    void drinkAPotion(int characterIndex) {
-        charactersList.get(characterIndex).drinkingHealingPotion();
+    static String drinkAPotion(int characterIndex) {
+        return charactersList.get(characterIndex).drinkingHealingPotion();
     }
 
-    // ####################################
-    // #              Attack              #
-    // ####################################
-    void someoneAttacks(int attackerIndex, int defenderIndex) {
+    // Attack
+    static String someoneAttacks(int attackerIndex, int defenderIndex) {
         String attackerName = getCharacterName(attackerIndex);
         String defenderName = getCharacterName(defenderIndex);
         int weaponDamage = getWeaponDamage(attackerIndex);
+
         int weaponInt = getIndexOfEquippedWeapon(attackerIndex);
         String attackerWeaponName = getWeaponName(weaponInt);
-        charactersList.get(defenderIndex).beingAttacked(defenderName, attackerName, weaponDamage, attackerWeaponName);
+
+        return charactersList.get(defenderIndex)
+                .beingAttacked(defenderName, attackerName, weaponDamage, attackerWeaponName);
     }
 
-    // ####################################
-    // #   Requirements for the grade G   #
-    // ####################################
-    void searchWeapon(String weaponName) {
+    // Requirements for the grade G
+    static boolean searchWeapon(String weaponName) {
         // We have to use a switch-statement in this assignment so I use it and bypass it completely
         boolean userFindWeapon = false;
-        switch (1) {
+        switch (2) {
             case 1:
-                userFindWeapon = isWeaponNameInWeaponList(weaponName);
+                System.out.println("Not used");
                 break;
             case 2:
-                System.out.println("Not used");
+                userFindWeapon = isWeaponNameInWeaponList(weaponName);
                 break;
             default:
                 System.out.println("Shouldn't ever print this");
                 break;
         }
 
-        printMessageForFoundAndNotFound(weaponName, userFindWeapon);
+        return userFindWeapon;
     }
 
-    private boolean isWeaponNameInWeaponList(String weaponName) {
+    static String witchCharacterHasTheWeaponEquipped(String weaponName) {
+        for (Character character : charactersList) {
+            String characterName = character.getCharacterName();
+            int indexOfWeapon = character.getEquippedWeapon();
+            String foundWeapon = weaponsList.get(indexOfWeapon).getWeaponName();
+
+            if (weaponNamesMatch(weaponName, foundWeapon)) {
+                return ("The weapon " + weaponName + " is equipped by " + characterName).toUpperCase();
+            }
+        }
+        return "No character have " + weaponName + " equipped!".toUpperCase();
+    }
+
+    static boolean isWeaponNameInWeaponList(String weaponName) {
         for (int i = 0; i < weaponsList.size(); i++) {
             String foundWeapon = getWeaponName(i);
             if (weaponNamesMatch(weaponName, foundWeapon)) {
@@ -166,27 +188,17 @@ class GameLogic {
         return false;
     }
 
-    private boolean weaponNamesMatch(String weaponName, String foundWeapon) {
+    static boolean weaponNamesMatch(String weaponName, String foundWeapon) {
         return foundWeapon.equals(weaponName);
     }
 
-    private void printMessageForFoundAndNotFound(String weaponName, boolean userFindWeapon) {
-        if (userFindWeapon) {
-            System.out.println("found " + weaponName + " !");
-        } else {
-            System.out.println("didn't found " + weaponName + " !");
-        }
-    }
-
-    // ####################################
-    // #  Requirements for the grade VG   #
-    // ####################################
-    void equipCharacterWithNewWeapon(int characterIndex, String weaponName) {
+    // Requirements for the grade VG
+    static String equipCharacterWithNewWeapon(int characterIndex, String weaponName) {
         int indexOfWeapon = getIndexOfWeapon(weaponName);
-        ifWeaponNameExistsEquipIt(characterIndex, indexOfWeapon);
+        return ifWeaponNameExistsEquipIt(characterIndex, indexOfWeapon);
     }
 
-    int getIndexOfWeapon(String searchForWeaponName) {
+    static int getIndexOfWeapon(String searchForWeaponName) {
         for (int i = 0; i < weaponsList.size(); i++) {
             String weaponName = weaponsList.get(i).getWeaponName();
             if (weaponNamesMatch(searchForWeaponName, weaponName)) {
@@ -196,19 +208,20 @@ class GameLogic {
         return -1;
     }
 
-    private void ifWeaponNameExistsEquipIt(int characterIndex, int indexOfWeapon) {
+    static String ifWeaponNameExistsEquipIt(int characterIndex, int indexOfWeapon) {
         if (weaponWasNotFound(indexOfWeapon)) {
-            System.out.println("Couldn't find that weapon");
+            return "Couldn't find that weapon";
         } else {
             equipNewWeapon(indexOfWeapon, characterIndex);
+            return "Weapon equipped";
         }
     }
 
-    private boolean weaponWasNotFound(int indexOfWeapon) {
+    static boolean weaponWasNotFound(int indexOfWeapon) {
         return indexOfWeapon == -1;
     }
 
-    private void equipNewWeapon( int characterIndex, int weaponIndex) {
+    static void equipNewWeapon(int characterIndex, int weaponIndex) {
         charactersList.get(characterIndex).setEquippedWeapon(weaponIndex);
     }
 }

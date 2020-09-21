@@ -52,43 +52,41 @@ public class Character {
         return hp;
     }
 
-    public void beingAttacked (String defenderName, String attackerName,int attackerWeaponDamage, String
-            attackerWeaponName){
+    public String beingAttacked(String defenderName, String attackerName, int attackerWeaponDamage, String
+            attackerWeaponName) {
+        String message;
         if (userIsDead()) {
-            System.out.println("YOU CANNOT ATTACK");
+            message = "Character Already dead!".toUpperCase();
         } else {
             /* System.err.println("WILD " + attackerName + " APPEARS!"); */
-            System.out.println(attackerName + " STRIKES " + defenderName + " WITH A " + attackerWeaponName + " IT DOES " + attackerWeaponDamage + " DAMAGE");
+            message =
+                    attackerName + " STRIKES " + defenderName + " WITH A " + attackerWeaponName + ", IT DOES " + attackerWeaponDamage + " DAMAGE\n";
             hp = (hp - attackerWeaponDamage);
-            checkIfCharacterIsDeadOrAlive(defenderName);
+            if (userIsAlive()) {
+                message += defenderName + " HAS " + hp + " REMAINING HEALTH!";
+            } else {
+                message += defenderName + " DIED!";
+                hp = 0;
+            }
         }
-        System.out.println("-------------------------------------------");
+        return message;
     }
 
     private boolean userIsDead() {
         return hp <= 0;
     }
 
-    private void checkIfCharacterIsDeadOrAlive(String defenderName) {
-        if (userIsAlive()) {
-            System.out.println(defenderName + " HAS " + hp + " REMAINING HEALTH! ");
-        } else {
-            System.out.println(defenderName + " DIED!");
-        }
-    }
-
     private boolean userIsAlive() {
         return hp > 0;
     }
 
-    public void drinkingHealingPotion () {
+    public String drinkingHealingPotion() {
         int healingPotion = 20;
         hp = hp + healingPotion;
         if (hp >= 100) {
             hp = 100;
         }
-        System.out.println(characterName + " GAINED " + healingPotion + " HEALTH BY DRINKING A HEALING POTION");
-        System.out.println(characterName + " NOW HAS A HEALTH OF " + hp);
-        System.out.println("-------------------------------------------");
+        return characterName + " GAINED " + healingPotion + " HEALTH BY DRINKING A HEALING POTION\n"
+                + characterName + " NOW HAS A HEALTH OF " + hp;
     }
 }
