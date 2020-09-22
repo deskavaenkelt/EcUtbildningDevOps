@@ -24,5 +24,5 @@ import org.junit.runner.RunWith;
 @RunWith(JUnitPlatform.class)
 @SuiteDisplayName("JUnit Platform Suite")
 @SelectClasses({CharacterTest.class, GameTest.class, SearchWeaponTest.class})
-public class JUnitPlatformSuiteDemo {
+public class JUnitPlatformSuite {
 }
