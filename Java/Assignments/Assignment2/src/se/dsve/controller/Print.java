@@ -27,10 +27,9 @@ public class Print {
                 + name + "'s HP = " + hp;
     }
 
-    static String equippedWeapon(int characterIndex) {
+    static String charactersEquippedWeapon(int characterIndex) {
         String weaponName = GameLogic.currentlyEquippedWeapon(characterIndex);
         String characterName = GameLogic.getCharacterName(characterIndex);
         return characterName + "'s weapon name is: " + weaponName;
     }
-
 }

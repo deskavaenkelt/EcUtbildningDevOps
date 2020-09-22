@@ -78,7 +78,7 @@ class PrintTest {
     @Test
     void equippedWeapon() {
         fillLists();
-        String message = Print.equippedWeapon(1);
+        String message = Print.charactersEquippedWeapon(1);
         assertEquals(message, "Character2's weapon name is: weapon2");
         assertNotEquals(message, "Character3's weapon name is: weapon2");
     }

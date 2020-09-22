@@ -2,6 +2,7 @@ package se.dsve.controller;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import se.dsve.model.Character;
 import se.dsve.model.Weapon;
@@ -28,6 +29,8 @@ import static se.dsve.controller.GameLogic.*;
 
 // Tests not required0 for Assignment 2
 class GameLogicTest {
+
+//    private GameLogic gameLogicTest;
 
     private final String[] weaponNames = {"weapon1", "weapon2", "weapon3"};
     private final int[] weaponDamage = {100, 50, 25};
@@ -57,6 +60,8 @@ class GameLogicTest {
     @BeforeEach
     void setUp() {
         createArrayLists();
+//        gameLogicTest = new GameLogic();
+//        gameLogicTest.
     }
 
     @AfterEach
@@ -281,64 +286,23 @@ class GameLogicTest {
 
     // Requirements for the grade VG
     @Test
-    void equipCharacterWithNewWeapon() {
-        fillLists();
-        int characterIndex = 0;
-        int equipWeaponOnIndex = 2;
-        String weaponNameToEquip = weaponsList.get(equipWeaponOnIndex).getWeaponName();
-
-        System.out.println(Print.equippedWeapon(characterIndex));
-        String oldWeaponName = GameLogic.currentlyEquippedWeapon(characterIndex);
-        System.out.println("oldWeaponName = " + oldWeaponName);
-        System.out.println("weaponNameToEquip = " + weaponNameToEquip);
-
-        String message = GameLogic.equipCharacterWithNewWeapon(characterIndex, weaponNameToEquip);
-        System.out.println(message);
-
-        System.out.println(Print.equippedWeapon(characterIndex));
-        String newWeaponName = GameLogic.currentlyEquippedWeapon(characterIndex);
-        System.out.println("newWeaponName = " + newWeaponName);
-
-        System.out.println(weaponNames[0]);
-        System.out.println(weaponNames[1]);
-        System.out.println(weaponNames[2]);
-
-        System.out.println(weaponsList.get(0).getWeaponName());
-        System.out.println(weaponsList.get(1).getWeaponName());
-        System.out.println(weaponsList.get(2).getWeaponName());
-
-        assertNotEquals(oldWeaponName, newWeaponName);
-        assertEquals(newWeaponName,  weaponNames[equipWeaponOnIndex]);
-        assertEquals(message, "Weapon equipped");
-    }
-
-    @Test
-    void getIndexOfWeapon() {
-        fillLists();
-        for (int i = 0; i < weaponNames.length; i++) {
-            assertEquals(i, GameLogic.getIndexOfWeapon(weaponNames[i]));
-        }
-        assertEquals(-1, GameLogic.getIndexOfWeapon("Excalibur"));
-    }
-
-    @Test
-    void ifWeaponNameExistsEquipIt() {
+    void equipWeaponIfWeaponIndexExist() {
         fillLists();
         String message;
-        message = GameLogic.ifWeaponNameExistsEquipIt(0, 2);
+        message = GameLogic.equipWeaponIfWeaponIndexExist(0, 2);
         assertEquals(message, "Weapon equipped");
 
-        message = GameLogic.ifWeaponNameExistsEquipIt(0, -1);
+        message = GameLogic.equipWeaponIfWeaponIndexExist(0, -1);
         assertEquals(message, "Couldn't find that weapon");
     }
 
     @Test
-    void weaponWasNotFound() {
+    void isWeaponFound() {
         fillLists();
         for (int i = 0; i < weaponsList.size(); i++) {
-            assertFalse(GameLogic.weaponWasNotFound(i));
+            assertTrue(GameLogic.isWeaponFound(i));
         }
-        assertTrue(GameLogic.weaponWasNotFound(-1));
+        assertFalse(GameLogic.isWeaponFound(-1));
     }
 
     @Test
@@ -346,11 +310,13 @@ class GameLogicTest {
         fillLists();
         int characterIndex = 1;
         int oldWeaponIndex = charactersList.get(characterIndex).getEquippedWeapon();
+        System.out.println(oldWeaponIndex);
 
         int equipWeaponOnIndex = 0;
         GameLogic.equipNewWeapon(characterIndex, equipWeaponOnIndex);
 
         int newWeaponIndex = charactersList.get(characterIndex).getEquippedWeapon();
+        System.out.println(newWeaponIndex);
         assertNotEquals(oldWeaponIndex, newWeaponIndex);
 
         assertEquals(newWeaponIndex,  equipWeaponOnIndex);

@@ -141,12 +141,11 @@ public class Game {
 
     private void arthurChangeWeapon() {
         System.out.println("Arthur throws his old weapon on the ground and equips Excalibur");
-        String weaponName = GameLogic.getWeaponName(EXCALIBUR_WEAPON_INDEX);
-        String message = GameLogic.equipCharacterWithNewWeapon(ARTHUR_CHARACTER_INDEX, weaponName);
+        String message = GameLogic.equipWeaponIfWeaponIndexExist(ARTHUR_CHARACTER_INDEX, EXCALIBUR_WEAPON_INDEX);
         System.out.println(message);
     }
 
     private void printEquippedWeapon(int characterIndex) {
-        System.out.println(Print.equippedWeapon(characterIndex));
+        System.out.println(Print.charactersEquippedWeapon(characterIndex));
     }
 }

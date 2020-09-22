@@ -83,27 +83,6 @@ class GameLogic {
     }
 
     // Return different stats
-
-//    static String[] returnACharactersStats(int characterIndex) {
-//        String[] characterStats = new String[3];
-//        characterStats[0] = getCharacterName(characterIndex);
-//        characterStats[1] = currentlyEquippedWeapon(characterIndex);
-//        characterStats[2] = Integer.toString(getCurrentHp(characterIndex));
-//        return characterStats;
-//    }
-
-//    void printACharactersStats(int characterIndex) {
-//        String characterName = getCharacterName(characterIndex);
-//        System.out.println(characterName + "'s stats");
-//        printWhatWeaponACharacterHave(characterIndex);
-//        System.out.println(characterName + "'s HP = " + getCurrentHp(characterIndex));
-//    }
-
-//    void printWhatWeaponACharacterHave(int characterIndex) {
-//        String characterName = getCharacterName(characterIndex);
-//        System.out.println(characterName + "'s weapon name is: " + currentlyEquippedWeapon(characterIndex));
-//    }
-
     static String currentlyEquippedWeapon(int characterIndex) {
         int indexOfEquippedWeapon = charactersList.get(characterIndex).getEquippedWeapon();
         return getWeaponName(indexOfEquippedWeapon);
@@ -193,32 +172,17 @@ class GameLogic {
     }
 
     // Requirements for the grade VG
-    static String equipCharacterWithNewWeapon(int characterIndex, String weaponName) {
-        int indexOfWeapon = getIndexOfWeapon(weaponName);
-        return ifWeaponNameExistsEquipIt(characterIndex, indexOfWeapon);
-    }
-
-    static int getIndexOfWeapon(String searchForWeaponName) {
-        for (int i = 0; i < weaponsList.size(); i++) {
-            String weaponName = weaponsList.get(i).getWeaponName();
-            if (weaponNamesMatch(searchForWeaponName, weaponName)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    static String ifWeaponNameExistsEquipIt(int characterIndex, int indexOfWeapon) {
-        if (weaponWasNotFound(indexOfWeapon)) {
-            return "Couldn't find that weapon";
-        } else {
+    static String equipWeaponIfWeaponIndexExist(int characterIndex, int indexOfWeapon) {
+        if (isWeaponFound(indexOfWeapon)) {
             equipNewWeapon(indexOfWeapon, characterIndex);
             return "Weapon equipped";
+        } else {
+            return "Couldn't find that weapon";
         }
     }
 
-    static boolean weaponWasNotFound(int indexOfWeapon) {
-        return indexOfWeapon == -1;
+    static boolean isWeaponFound(int indexOfWeapon) {
+        return indexOfWeapon >= 0 && indexOfWeapon < weaponsList.size();
     }
 
     static void equipNewWeapon(int characterIndex, int weaponIndex) {
