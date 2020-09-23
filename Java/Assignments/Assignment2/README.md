@@ -11,7 +11,8 @@ Skriv en metod som utrustar valfri karaktär med vapnet "Excalibur". Se till att
 
 # Template from teacher
 
-`package com.company;
+```
+package com.company;
 
 public class Main {
 
@@ -69,17 +70,17 @@ public class Main {
         goodGuy.drinkingHealingPotion();
         evilGuy.drinkingHealingPotion();
     }
-}`
+}
+```
 
 # Result
-The code works ass expected, and the requirements ar meet.
+The code works as expected, and the requirements are meet.
 
-Tests that is implemented works.
+Tests that are implemented works.
 
 I did write my tests after the assignment was solved.
 
 ## Final thoughts
 I'm not really satisfied with the result of the GameLogic class which can be improved a lot.
 
-I did redo this assignment using TDD [here](https://github.com/deskavaenkelt/EcUtbildningDevOps/tree/master/Java
-/Assignments/Assignment2TDD) where I solved the assignment from scratch. 
+I did redo this assignment using TDD [here](https://github.com/deskavaenkelt/EcUtbildningDevOps/tree/master/Java/Assignments/Assignment2TDD) where I solved the assignment from scratch. 
