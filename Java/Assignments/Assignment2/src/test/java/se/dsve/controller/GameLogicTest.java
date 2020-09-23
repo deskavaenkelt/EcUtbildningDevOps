@@ -28,7 +28,7 @@ import static se.dsve.controller.GameLogic.*;
  */
 
 // Tests not required0 for Assignment 2
-class GameLogicTest {
+public class GameLogicTest {
 
 //    private GameLogic gameLogicTest;
 

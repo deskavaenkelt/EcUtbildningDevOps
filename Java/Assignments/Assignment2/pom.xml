@@ -36,11 +36,5 @@
             <version>1.7.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 </project>

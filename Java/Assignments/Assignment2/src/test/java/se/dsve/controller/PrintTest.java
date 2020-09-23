@@ -25,7 +25,7 @@ import static se.dsve.controller.GameLogic.*;
  * https://github.com/deskavaenkelt/
  */
 
-class PrintTest {
+public class PrintTest {
 
     private final String[] weaponNames = {"weapon1", "weapon2", "weapon3"};
     private final int[] weaponDamage = {100, 50, 25};
