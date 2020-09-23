@@ -38,10 +38,13 @@ G and VG requirements ar separated into different parts.
 To merge the two parts wasn't the goal here.
 
 Line coverage project tree
+
 ![Line coverage project tree](img/coverage_tree.png)
 
 Line coverage classes
+
 ![Line coverage classes](img/coverage_classes.png)
 
 JUnit Platform Suite
+
 ![JUnit Platform Suite](img/JUnitPlatformSuite.png)
