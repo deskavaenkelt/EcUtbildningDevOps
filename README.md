@@ -24,3 +24,5 @@ Introduktion till Java
 - Operatorer
 
 
+## Lecture 8
+Recap of previous lectures
