@@ -93,7 +93,7 @@ public class Game {
         String name = "Bastard Sword";
         boolean theBeastFindWeapon = GameLogic.searchWeapon(name);
 
-        System.out.print("Arthur ");
+        System.out.print("The Beast ");
         if (theBeastFindWeapon) {
             System.out.println("found " + name + " !");
         } else {

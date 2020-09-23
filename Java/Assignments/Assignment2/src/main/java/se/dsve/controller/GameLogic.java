@@ -144,6 +144,7 @@ class GameLogic {
         return userFindWeapon;
     }
 
+    // Originally this was "searchWeapon"
     static String witchCharacterHasTheWeaponEquipped(String weaponName) {
         for (Character character : charactersList) {
             String characterName = character.getCharacterName();
