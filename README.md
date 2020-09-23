@@ -23,6 +23,8 @@ Introduktion till Java
 ## Lektion 3
 - Operatorer
 
-
 ## Lecture 8
-Recap of previous lectures
+Recap of previous lectures and work on Assignment 2
+
+## Lecture 9
+Recap of previous lectures and work on Assignment 2
