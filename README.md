@@ -28,3 +28,6 @@ Recap of previous lectures and work on Assignment 2
 
 ## Lecture 9
 Recap of previous lectures and work on Assignment 2
+
+## Lecture 10
+Loops
