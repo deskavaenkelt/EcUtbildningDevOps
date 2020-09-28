@@ -1,27 +1,27 @@
 # DevOps repo for studies at EC Utbildning 2020-2022
 
 ## Tutorials
-Installera:
-- Java på Linux
-- Stöd för Java i VSCODE
+Install :
+- Java on Linux
+- Support for Java in VSCODE
 - IntelliJ IDEA Community Edition
 [Java Guide here](Java/Tutorials/Java)
 
-## Lektion 1
-Tittat på arbetsflöden och verktyg.
-- VirtualBox med Ubuntu
-- CLI kommandon och navigering
-- Vim och hantering av den
-- Installerat VSCode
+## Lecture 1
+Locked att workflow and tools
+- VirtualBox with Ubuntu
+- CLI commands and navigations
+- Vim and usage
+- Install VSCode
 
-## Lektion 2
-Introduktion till Java
+## Lecture 2
+Introduction to Java
 - Syntax
-- Variabler
-- Main funktionen
+- Variables
+- Main function
 
-## Lektion 3
-- Operatorer
+## Lecture 3
+- Operators
 
 ## Lecture 8
 Recap of previous lectures and work on Assignment 2
