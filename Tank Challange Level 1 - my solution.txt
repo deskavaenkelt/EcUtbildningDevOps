@@ -1,0 +1,95 @@
+Tank Challange Level 1 - my solution, score: 1821p
+
+import java.util.*;
+
+public class Solution implements SolutionInterface {
+
+    private boolean inStartingPosition = false;
+    boolean goForwardNextMove = false;
+    boolean targetAccuired = false;
+    boolean turnRightNextMove = false;
+    boolean turnLeftNextMove = false;
+    boolean doALeftAfterSchooting = false;
+    
+    
+    private void moveToStartingPosition(){
+        System.out.println("moveToStartingPosition()");
+        if (API.lidarFront() == 1){
+            API.turnRight();
+            inStartingPosition = true;
+        } else {
+            API.moveForward();
+        }
+    }
+    
+    private void shootOnTarget(){
+        System.out.println("shootOnTarget()");
+        API.fireCannon();
+    }
+    private void ifNoTarget(){
+        if (!targetAccuired)
+            System.out.println("ifNoTarget() = " + targetAccuired);
+            turnLeftNextMove = true;
+            goForwardNextMove = true;
+    }
+    
+    private void checkForTargetAhead(){
+        System.out.println("checkForTargetAhead()");
+        targetAccuired = API.identifyTarget();
+    }
+    
+    private void startTheHunt(){
+        System.out.println("startTheHunt()");
+        checkForTargetAhead();
+        if(targetAccuired){
+            System.out.println("targetAccuired");
+            shootOnTarget();
+            doALeftAfterSchooting = true;
+            // checkForTargetAhead();
+            // ifNoTarget();
+        } else {
+            System.out.println("No targetAccuired");
+            
+            if (doALeftAfterSchooting){
+                turnLeftNextMove = true;
+                goForwardNextMove = true;
+                doALeftAfterSchooting = false;
+            } else if (API.lidarRight() < 18){
+                API.turnRight();
+            
+                if (API.identifyTarget()){
+                    targetAccuired = true;
+                } else {
+                    turnLeftNextMove = true;
+                    goForwardNextMove = true;
+                }
+            } else {
+                API.moveForward();
+            }
+        }
+    }
+    
+    public Solution() {
+        API.turnLeft();
+    }
+
+    public void update() {
+        if(turnRightNextMove){
+            System.out.println("turnRightNextMove activated!");
+            API.turnRight();
+            turnRightNextMove = false;
+        } else if(turnLeftNextMove){
+            System.out.println("turnLeftNextMove activated!");
+            API.turnLeft();
+            turnLeftNextMove = false;
+        } else if (goForwardNextMove) {
+            System.out.println("goForwardNextMove activated!");
+            API.moveForward();
+            goForwardNextMove = false;
+        } else if(inStartingPosition){
+            startTheHunt();
+        } else {
+            moveToStartingPosition();
+        }
+    }
+}

@@ -1,0 +1,240 @@
+Tank Challange Level 4 - my solution, score: 1703p
+
+import java.util.*;
+import static java.lang.Math.*;
+
+public class Solution implements SolutionInterface {
+    boolean targetAccuired = false;
+    boolean forwardNextMove = false;
+    boolean rightNextMove = false;
+    boolean leftNextMove = false;
+    
+    int distanceFront = 0;
+    int distanceRight = 0;
+    int distanceBack = 0;
+    int distanceLeft = 0;
+    int shortestDistance = 0;
+    boolean isAllDistancesBiggerThanTwo = false;
+    
+    boolean isWallFront = false;
+    boolean isWallRight = false;
+    boolean isWallBack = false;
+    boolean isWallLeft = false;
+    
+    int distanceWallFront = 20;
+    int distanceWallRight = 20;
+    int distanceWallBack = 20;
+    int distanceWallLeft = 20; 
+    
+    int counter = 0;
+    
+    private void goForwardNextMove(){
+        forwardNextMove = true;
+    }
+    private void turnRightNextMove(){
+        rightNextMove = true;
+    }
+    private void turnLeftNextMove(){
+        leftNextMove = true;
+    }
+    
+    private void resetGoForwardNextMove(){
+        forwardNextMove = false;
+    }
+    private void resetTurnRightNextMove(){
+        rightNextMove = false;
+    }
+    private void resetTurnLeftNextMove(){
+        leftNextMove = false;
+    }
+    
+    private void shootOnTarget(){
+        System.out.println("shootOnTarget()");
+        API.fireCannon();
+    }
+    
+    private void schootIfTargetAhead(){
+        checkForTargetAhead();
+        if (targetAccuired) 
+            shootOnTarget();
+    }
+    
+    private void startTheHunt(){
+        System.out.println("startTheHunt()");
+        checkForTargetAhead();
+        if (targetAccuired) 
+            shootOnTarget();
+        else {
+            
+            // if (API.lidarRight() < 3 || API.lidarBack() < 2)
+            //     API.turnRight();
+            // else if (API.lidarLeft() < 3)
+            //     API.turnLeft();
+            // schootIfTargetAhead();
+        }
+    }
+    
+    public Solution() {
+        
+    }
+    
+    private void checkForTargetAhead(){
+        System.out.println("checkForTargetAhead()");
+        targetAccuired = API.identifyTarget();
+    }
+    
+    private void updateDistances() {
+        distanceFront = API.lidarFront();
+        distanceRight = API.lidarRight();
+        distanceBack = API.lidarBack();
+        distanceLeft = API.lidarLeft();
+        calculateShortestDistance();
+        checkIfAllDistancesBiggerThanTwo();
+        System.out.println("distanceFront = " + distanceFront);
+        System.out.println("distanceRight = " + distanceRight);
+        System.out.println("distanceBack = " + distanceBack);
+        System.out.println("distanceLeft = " + distanceLeft);
+        System.out.println("shortestDistance = " + shortestDistance);
+    }
+    
+    private void calculateShortestDistance(){
+        int dist1 = Math.min(distanceFront, distanceRight);
+        int dist2 = Math.min(distanceBack, distanceLeft);
+        shortestDistance = Math.min(dist1, dist2);
+    }
+    
+    private void checkIfAllDistancesBiggerThanTwo() {
+        if (2 < distanceFront && 2 < distanceRight && 2 < distanceBack && 2 < distanceLeft)
+            isAllDistancesBiggerThanTwo = true;
+        else
+            isAllDistancesBiggerThanTwo = false;
+    }
+    
+    private void doThisInTheBeginingOfEveryRond() {
+        checkForTargetAhead();
+        updateDistances();
+    }
+
+    public void update() {
+        doThisInTheBeginingOfEveryRond();
+        
+        if (rightNextMove) {
+            System.out.println("rightNextMove Executed!");
+            API.turnRight();
+            resetTurnRightNextMove();
+        } else if (leftNextMove) {
+            System.out.println("leftNextMove Executed!");
+            API.turnLeft();
+            resetTurnLeftNextMove();
+        } else if (forwardNextMove) {
+            System.out.println("forwardNextMove Executed!");
+            API.moveForward();
+            resetGoForwardNextMove();
+        } else {
+            System.out.println("makeDesitionBasedOnSurrondings() Executed!");
+            makeDesitionBasedOnSurrondings();
+        } 
+    }
+    
+    // Make a desition making state-mashine
+    private void makeDesitionBasedOnSurrondings(){
+        if (targetAccuired) 
+            shootOnTarget();
+        else if (distanceFront < 3) {
+            if (isSomethingCloserOnLeftSide())
+                API.turnRight();
+            else
+                API.turnLeft();
+            
+            goForwardNextMove();
+        }
+        else {
+            
+            if(isAllDistancesBiggerThanTwo){
+                API.moveForward();
+            } else if (isInFrontLeftCornerBlocked()){
+                API.turnRight();
+                goForwardNextMove();
+            } else if (isInFrontRightCornerBlocked()){
+                API.turnLeft();
+                goForwardNextMove();
+            } else if (isBackedIntoACorner()){
+                API.turnLeft();
+            } else if (isFrontShortestDistance()){
+                if (targetAccuired)
+                    shootOnTarget();
+                else
+                    API.turnRight();
+            } else if (isRightShortestDistance()) {
+                    API.turnRight();
+            } else if (isBackShortestDistance()) {
+                if (distanceRight < distanceLeft)
+                    API.turnRight();
+                else
+                    API.turnLeft();
+            } else if (isLeftShortestDistance()) {
+                API.turnLeft();
+            } else {
+                API.moveForward();
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    private boolean isInFrontLeftCornerBlocked() {
+        return distanceLeft == 1 && distanceFront == 1;
+    }
+    
+    private boolean isInFrontRightCornerBlocked() {
+        return distanceRight == 1 && distanceFront == 1;
+    }
+
+    private boolean isSomethingCloserOnLeftSide() {
+        return distanceRight < distanceLeft;
+    }
+    
+    private boolean isBackedIntoACorner() {
+        return (distanceLeft == 1 && distanceBack == 1) || (distanceRight == 1 && distanceBack == 1);
+    }
+    
+    private boolean isFrontShortestDistance() {
+        return shortestDistance == distanceFront;
+    }
+    
+    private boolean isRightShortestDistance() {
+        return shortestDistance == distanceRight;
+    }
+    
+    private boolean isLeftShortestDistance() {
+        return shortestDistance == distanceLeft;
+    }
+    
+    private boolean isBackShortestDistance() {
+        return shortestDistance == distanceBack;
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
