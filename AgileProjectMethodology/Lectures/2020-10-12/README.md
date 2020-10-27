@@ -39,8 +39,7 @@
 
 ### Learn to master anything
 ![Learn to master anything](img/how-to-master-anything.png)
-`from Scrum: The Art of Doing Twice the Work in Half the Time`
-
+`from Scrum: The Art of Doing Twice the Work in Half the Time`  
 
 ## Recommended books
 - The Lean Startup [here](https://www.bokus.com/bok/9781524762407/lean-startup/)
@@ -48,5 +47,8 @@
 ## Recourses
 [What is scrum](https://www.scrum.org/resources/what-is-scrum)  
 [Scrum Guides](https://www.scrumguides.org)  
-[The Scrum Guide PDF](https://www.scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-US.pdf#zoom=100)
-[The Scrum Guide PDF - Swedish Edition](https://www.scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-Swedish.pdf)
+[The Scrum Guide PDF](https://www.scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-US.pdf#zoom=100)  
+[The Scrum Guide PDF - Swedish Edition](https://www.scrumguides.org/docs/scrumguide/v2017/2017-Scrum-Guide-Swedish.pdf)  
+
+### Other
+[Comprehensive Scrum Guide](https://www.visual-paradigm.com/scrum/what-is-scrum/)
