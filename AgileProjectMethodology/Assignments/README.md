@@ -227,3 +227,7 @@ By the end of the meeting the team, and the Scrum Master should agree on one pro
 ### Sprint Review and Sprint Retrospective plan
 Sprint review should be planed for the last Friday of the sprint at 1 pm. With a follow-up Sprint retrospective at 3 pm. While the Sprint retrospective is ongoing, the Architects and product owners should have a parallel planning meeting and prioritize for the next Sprint. The teams will have their Sprint planning on Monday morning, and takes the teams experience with implements and process improvements into account in the new Sprint.
 
+## Reflection
+Something that I have been thinking about is the use of a Full Stack Developer, if one person of these nine developers has this skill set. There is the possibility for this developer to work 50% on each team, according to Scrum it's not recommended, to have one person in two teams. But in this case the Full Stack Developer would make sure so that the integration between the two team go smooth. That would mean that each team have 4,5 developers and I imagine that one of the middle range developers on the backend team could have that role with a couple of years of experiences.
+
+On the other hand, there is, two Architects available as stakeholders who are supposed, to make sure, that the design for the frontend and backend are fully compatible. They lay the foundation for the entire project and make sure the grand design runs smooth. 
