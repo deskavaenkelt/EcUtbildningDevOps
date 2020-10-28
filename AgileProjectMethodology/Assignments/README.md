@@ -191,7 +191,7 @@ This view and, or a burn down chart would be on an always on display, so the tea
 #### The Burndown chart
 on one axis is the number of points the team has taken into the Sprint, on the other is the number of days. Every day the Scrum Master tallies up the number of points completed and graphs them on the Burndown chart. Ideally there will be a steep downward slope leading to zero points left on the last day of the Sprint.
 
-##### Example of Burndown chart
+##### Example of Burndown chart (taken from Internet)
 ![Burndown chart](burn-down-chart-example.png) 
 
 ### Daily Stand-up or Daily Scrum
@@ -204,16 +204,26 @@ I think that the stand-up meeting should be as early as possible since you plan 
 That's the whole meeting. There's no assigning of task from above - the team is autonomous; they do that. There is no detailed report management. The Scrum Master is responsible for making the obstacles to the team's progress, o impediments, go away.
 
 ### Sprint Review or Demo Sprint
-
-
+At this meeting the team shows what they have accomplished during the Sprint. Anyone can come, not only the Product Owner, thr Scrum Master, and the team, but also stakeholders, management, customers, whoever. This is an open meeting where the team demonstrates what they were able to move to Done during the Sprint. Now, the team should only demonstrate what meets the Definition of Done. What is totally and completely finished and can be delivered without any more work. It may not be a completed product, but it should be a completed feature of one. 
 
 ### Sprint Retrospective
+After the team has shown what they've accomplished during the last Sprint - that thing that is "done" and can potentially be shipped to customers for feedback - they sit down and think about:
+ - what went right
+ - what could have gone better
+ - and what can be made better
+ 
+in the next Sprint.  
+What is the improvement in the process that they, as a  team, can implement right away? 
 
+The key thing here is to remember not to blame anyone, you are looking att the process.
+- Why did we miss that?
+- Why did that happen that way?
+- What could make us faster?
 
-## Workflow recap
-Sprint review should be planed for the last Friday of the sprint at 1 pm. With a follow-up Sprint retrospective at 3 pm. While the Sprint retrospective is ongoing, the Architects and product owners should have a parallel planning meeting and prioritize for the next Sprint. The teams will have their Sprint planning on Monday morning.
+It is crucial, that people as a team take responsibility for their process and outcomes, and seek solutions as a team. People hav to bee able to bring up issues that really bother them in a way that is solution orientated rather than accusatory. The rest of the team has to have the maturity to hear the feedback, take it in, and look for a solution rather than getting defensive.
 
+By the end of the meeting the team, and the Scrum Master should agree on one process improvement that they will implement in the next Sprint. That process improvement, is sometimes called _kaizen_,should be put into the next Sprints Backlog, with acceptance tests. That way the team can easily see if they actually implemented the improvement, and what effect it had on velocity. 
 
-
-
+### Sprint Review and Sprint Retrospective plan
+Sprint review should be planed for the last Friday of the sprint at 1 pm. With a follow-up Sprint retrospective at 3 pm. While the Sprint retrospective is ongoing, the Architects and product owners should have a parallel planning meeting and prioritize for the next Sprint. The teams will have their Sprint planning on Monday morning, and takes the teams experience with implements and process improvements into account in the new Sprint.
 
