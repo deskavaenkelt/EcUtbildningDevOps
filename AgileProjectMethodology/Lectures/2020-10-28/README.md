@@ -61,5 +61,52 @@ Underlätta den stressiga situationen på morgonen innnan tex förskola men äve
 
 ![Trello board](https://trello.com/b/dVEMRGDa/mini-scrum-grupp%C3%B6vning)
 
-## Sprintplanering 10:05-10:25
+## Sprintplanering 10:15-10:45 +10 min
+
+## Daily Scrum 10:45-10:50
+
+## Arbeta 10:55-11:10
+
+## Daily Scrum 11:10-11:15
+
+## Arbeta 11:25-11:40
+
+## Retrospective 13:00-13:15
+### vad gick bra?
+- Bra indelning 
+- Smidigt
+- Tidsmässigt var de bra
+- fick fram många punker i produktloggen
+- Vi fick fram något visuellt att visa
+
+### Vad kunde ha gått bättre
+- För långt planeringsmöte
+- Kände det var dålig kommunikation med feedback
+- Teams arbetssättet, gör det svårt att kommunicera
+- Uppskattade inte tiden
+- UX tog för lång tid
+
+### Vad kan vi göra bättre
+- Hålla scoopet
+- Hålla mer i kommunikationen
+- Arbeta mer simpelt
+
+## Sprint planering 13:15-13:35
+vi tar inte på oss mer
+
+## Daily Scrum 13:35-13:40
+
+## Arbeta 15 min
+
+## Daily Scrum 5 min
+
+## Arbeta 15 min
+
+## Daily Scrum 5 min
+
+## Arbeta 15 min
+
+## Sprint Review 20 min
+
+## Sprint Retrospective 15 min
 
