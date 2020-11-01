@@ -1,0 +1,126 @@
+import java.util.*;
+
+public class Solution implements SolutionInterface {
+    public Solution() {
+        // You can initiate and calculate things here
+    }
+
+    public void update() {
+        updateDistances();
+        checkForTargetAhead();
+        if (makeComplexTurnRight){
+            System.out.println("makeComplexTurn = " + makeComplexTurnRight);
+            runInComplexModeRight();
+        } else {
+            System.out.println("makeComplexTurn = " + makeComplexTurnLeft);
+            runInRightTurnMode();
+        }
+        System.out.println("counter = " + counter);
+    }
+    
+    private void runInComplexModeRight() {
+        if (complexCounter == 0) {
+            API.turnRight();
+        } else {
+            API.moveForward();
+            makeComplexTurnRight = false;
+        }
+        complexCounter++;
+    }
+    
+    private void runInComplexModeLeft() {
+        if (complexCounter == 0) {
+            API.turnLeft();
+        } else {
+            API.moveForward();
+            makeComplexTurnLeft = false;
+        }
+        complexCounter++;
+    }
+    
+    private void runInRightTurnMode(){
+        if (targetAccuired) {
+            shootOnTarget();
+        } else if (isFrontLeftBlocked()) {
+            makeComplexTurnRight = true;
+            complexCounter = 0;
+        } else if (isFrontRightBlocked()) {
+            makeComplexTurnLeft = true;
+            complexCounter = 0;
+        } else if (counter < 4) {
+            API.turnRight();
+            counter++;
+        } else if (counter == 5) {
+            API.moveForward();
+            counter = 0;
+        } else {
+            if (distanceFront == 1) {
+                API.turnRight();
+                counter = 5;
+            } else {
+                API.moveForward();
+                counter = 0;
+            }
+        }
+    }
+    
+    boolean targetAccuired = false;
+    boolean makeComplexTurnRight = false;
+    boolean makeComplexTurnLeft = false;
+    
+    int distanceFront = 0;
+    int distanceRight = 0;
+    int distanceBack = 0;
+    int distanceLeft = 0;
+    int shortestDistance = 0;
+    boolean isAllDistancesBiggerThanTwo = false;
+    int counter = 0;
+    int complexCounter = 0;
+    
+    private boolean isInBackLeftCorner() {
+        return (distanceBack == 1 && distanceLeft == 1);
+    }
+    
+    private boolean isFrontLeftBlocked() {
+        return (distanceFront == 1 && distanceLeft == 1);
+    }
+    
+    private boolean isFrontRightBlocked() {
+        return (distanceFront == 1 && distanceRight == 1);
+    }
+    
+    private void updateDistances() {
+        System.out.println("updateDistances()");
+        distanceFront = API.lidarFront();
+        distanceRight = API.lidarRight();
+        distanceBack = API.lidarBack();
+        distanceLeft = API.lidarLeft();
+        shortestDistance = calculateShortestDistance();
+        System.out.println("distanceFront = " + distanceFront);
+        System.out.println("distanceRight = " + distanceRight);
+        System.out.println("distanceBack = " + distanceBack);
+        System.out.println("distanceLeft = " + distanceLeft);
+        System.out.println("shortestDistance = " + shortestDistance);
+    }
+    
+    private int calculateShortestDistance(){
+        int dist1 = Math.min(distanceFront, distanceRight);
+        int dist2 = Math.min(distanceBack, distanceLeft);
+        return Math.min(dist1, dist2);
+    }
+    
+    private void checkForTargetAhead(){
+        System.out.println("checkForTargetAhead()");
+        targetAccuired = API.identifyTarget();
+    }
+    
+    private void shootOnTarget(){
+        System.out.println("shootOnTarget()");
+        API.fireCannon();
+    }
+    
+    private void startTheHunt(){
+        System.out.println("startTheHunt()");
+        
+    }
+}
