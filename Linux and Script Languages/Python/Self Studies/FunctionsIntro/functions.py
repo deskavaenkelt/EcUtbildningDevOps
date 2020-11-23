@@ -1,9 +1,9 @@
-def multiply():
+def multiply() -> float:
     result = 10.5 * 4
     return result
 
 
-def multiply2(x, y):
+def multiply2(x: float, y: float) -> float:
     result = x * y
     return result
 
