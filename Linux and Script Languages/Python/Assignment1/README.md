@@ -14,10 +14,10 @@ __Detta är en IG/G uppgift__
 Programmet skall kunna ta in två argument och returnera summan i form av + - * /.  
 
 ## Krav
-- Om summan är 1<50 printa ”Less then fifty”[Text Wrapping Break]Om summan är 50 printa ”Fifty” 
-- Om summan är mer än 50 men mindre än 100 ”Almost a hundred” 
-- Om summan är 100 printa ut ”Spot on!” 
-- Om summan är mer än 100 printa ”Missed the spot!” 
+- Om resultatet är 1<50 printa ”Less then fifty”[Text Wrapping Break]Om summan är 50 printa ”Fifty” 
+- Om resultatet är mer än 50 men mindre än 100 ”Almost a hundred” 
+- Om resultatet är 100 printa ut ”Spot on!” 
+- Om resultatet är mer än 100 printa ”Missed the spot!” 
 
 Använd Git för att verisionshantera koden och ladda upp git-repot till din GitHub 
 
@@ -27,8 +27,9 @@ Använd Git för att verisionshantera koden och ladda upp git-repot till din Git
 - Det skall finnas tre commits under historiken. 
 
 
-
-
+# Saknar information
+- Ska alla räknesätt vara med
+- 
 
 
 
