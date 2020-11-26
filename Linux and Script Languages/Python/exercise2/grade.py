@@ -30,7 +30,7 @@ def get_user_input_as_int() -> int:
 
 def calculate_percent(score: float) -> float:
     """ Return Score as float """
-    return score / MAX_POINTS
+    return round(score / MAX_POINTS, 2)     # round of to two decimals
 
 
 def get_grade(calculated_percent: float) -> str:
@@ -52,4 +52,4 @@ student_score = get_user_input_as_int()
 score_percent = calculate_percent(student_score)
 student_grade = get_grade(score_percent)
 
-print('{} fick betyget {}'.format(student_name, student_grade))
+print('{} fick betyget {} och hade {}%'.format(student_name, student_grade, score_percent))
