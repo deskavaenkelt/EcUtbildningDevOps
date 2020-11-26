@@ -26,4 +26,5 @@ while True:
         elif current_choice == '4':
             account_balance = controller.collect_interest(account_balance)
         elif current_choice == '5':
+            outputs.end_message()
             break
