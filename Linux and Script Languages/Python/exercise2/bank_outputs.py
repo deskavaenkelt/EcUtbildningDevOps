@@ -45,13 +45,10 @@ def interest_print_yearly(amount_array: []) -> None:
         print('Year {}: \tTotal: {}'.format(year, value))
 
 
-def interest_total(years: int, amount:float) -> None:
+def interest_total(years: int, amount: float) -> None:
     print('You have skipped {} and your new balance is {}'
           .format(years, amount))
 
 
 def end_message():
     print('Bye')
-
-
-
