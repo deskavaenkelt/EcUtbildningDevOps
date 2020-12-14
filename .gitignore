@@ -92,3 +92,4 @@ js/egetSkrap.js
 .DS_Store
 .history
 venv/
+__pycache__
