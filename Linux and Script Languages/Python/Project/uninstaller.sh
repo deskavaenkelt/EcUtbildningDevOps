@@ -13,7 +13,7 @@ sudo systemctl status name_day.service
 sudo rm -d /lib/systemd/system/name_day.service
 
 # Delete directory in user home folder
-rm -r ~/.name_day
+rm -r ~/name_day
 
 # List files in directory
-ll -a ~/.name_day
+ll -a ~/name_day

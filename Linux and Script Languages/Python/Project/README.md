@@ -63,6 +63,16 @@
 - Start
 - Stop
 
+### Step 8
+#### Goal: Make an automated installer
+- Create in installation directory
+- Should download all files
+- Make executable files executable
+- Copy service to systemd
+- Start Service
+
+``
+
 ## [Get the service up and running]
 
 ### Step 1 - Edit Service File
