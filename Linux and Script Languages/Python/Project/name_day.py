@@ -13,7 +13,7 @@ def run_program():
         name_file.write(string)
 
 
-check_time_hour = 20
+check_time_hour = 0
 for_one_hour = 3600
 
 
