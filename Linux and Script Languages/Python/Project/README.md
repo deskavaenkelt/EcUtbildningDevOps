@@ -15,8 +15,47 @@
 
 ## Project log
 
+### Step 1
+#### Goal: To access the data in Python 
+- Make sure that I get data from the api request
+- Convert response to JSON format and save i `data` variable
+- Make sure I can access and print individual keys from `data` 
 
-## Get the service up and running
+### Step 2
+#### Goal: Save all relevant data (that I chose) to a list
+- Create methods for every single thing to do
+- Save the relevant data to a new list
+- Format the data to a nice locking string
+- Print the string
+
+### Step 3
+#### Goal: Write string to file, so it locks good
+- Save string from step 2 in to a file
+- Append new data to the file
+- Format string if necessary to lock nice
+
+### Step 4
+#### Goal: Refactor to nice locking code and whit easy to understand methods and variable name
+- Create classes, class is used for data structure 
+- Create modules, api and data transformations
+- Refactor and clean up code
+
+### Step 5
+#### Goal: write a service script
+- Create a service file to run m script as a service
+
+### Step 6
+#### Goal: Get the service up and running on a virtual Linux Server OS 
+- Clone repo to my virtual Ubuntu Server machine 
+- Check path to python
+- Check path to repo on disk
+- Update those in `nameday_service` ([`instructions below`](#get-the-service-up-and-running))
+- Copy `nameday_service` to `/lib/systemd/system/name_day.service`
+- Restart systemd daemon
+- Start the service 
+- Check status
+
+## [Get the service up and running](#get-the-service-up-and-running)
 
 ### Step 1 - Edit Service File
 Instructions for editing `nameday_service`
