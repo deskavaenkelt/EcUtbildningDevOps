@@ -55,7 +55,7 @@
 - Start the service 
 - Check status
 
-## [Get the service up and running](#get-the-service-up-and-running)
+## [Get the service up and running]
 
 ### Step 1 - Edit Service File
 Instructions for editing `nameday_service`
