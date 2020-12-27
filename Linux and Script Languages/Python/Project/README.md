@@ -55,6 +55,14 @@
 - Start the service 
 - Check status
 
+### Step 7
+#### Goal: Make Executable .sh files
+- Installer
+- Uninstaller
+- Restart
+- Start
+- Stop
+
 ## [Get the service up and running]
 
 ### Step 1 - Edit Service File
