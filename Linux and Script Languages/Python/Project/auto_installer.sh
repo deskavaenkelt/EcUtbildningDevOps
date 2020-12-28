@@ -5,34 +5,60 @@ mkdir ~/name_day
 cd ~/name_day
 
 # URL's
-api=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/api.py
-data_structure=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/data_structure.py
+# Script
+service_restart=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/scripts/service_restart.sh
+service_start=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/scripts/service_start.sh
+service_stop=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/scripts/service_stop.sh
+
+# Service
+name_day_service=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/service/name_day.service
+
+# Utils
+init=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/utils/__init__.py
+api=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/utils/api.py
+data_structure=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/utils/data_structure.py
+data_transformation=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/utils/data_transformation.py
+
+# Main
+main=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/name_day.py
+auto_installer=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/installer.sh
 installer=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/installer.sh
-name_day=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/name_day.py
-name_day_service=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/name_day.service
 name_days=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/name_days.txt
-service_restart=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/service_restart.sh
-service_start=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/service_start.sh
-service_stop=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/service_stop.sh
+readme=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/README.md
 uninstaller=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/uninstaller.sh
 
 
 # Use wget to download all files
-# Program files
-wget -O api.sh $api
-wget -O data_structure.py $data_structure
-wget -O installer.sh $installer
-wget -O name_day.py $name_day
-wget -O name_day.service $name_day_service
-wget -O data_structure.py $data_structure
-wget -O name_days.txt $name_days
+# Script
+mkdir script && cd script
 wget -O service_restart.sh $service_restart
 wget -O service_start.sh $service_start
 wget -O service_stop.sh $service_stop
+cd ..
+
+# Service
+mkdir service && cd service
+wget -O name_day.service $name_day_service
+cd ..
+
+# Utils
+mkdir utils && cd utils
+wget -O __init__.sh $init
+wget -O api.sh $api
+wget -O data_structure.py $data_structure
+wget -O data_transformation.py $data_transformation
+cd ..
+
+# Main
+wget -O __main__.py $main
+wget -O auto_installer.py $auto_installer
+wget -O installer.sh $installer
+wget -O name_days.txt $name_days
+wget -O README.md $readme
 wget -O uninstaller.sh $uninstaller
 
 # Copy service file to systemd
-sudo cp name_day.service /lib/systemd/system/name_day.service
+sudo cp /service/name_day.service /lib/systemd/system/name_day.service
 
 # Make executable
 chmod +x installer.sh
