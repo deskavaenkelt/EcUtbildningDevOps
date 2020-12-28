@@ -1,7 +1,7 @@
 # Python Project
 
 ## Knowledge to be evaluated
-- [ ] Describe different types of services in Linux
+- [x] Describe different types of services in Linux
 - [x] Use the terminal to use different shell commands
 - [x] Use the Linux environment in a relative way
 - [x] Use version management of code via terminal
@@ -12,6 +12,13 @@
 # Result
 
 ## Describe different types of services in Linux
+Some services that I know of:
+- systemd - System and Service handler
+- crond - Command scheduler
+- firewalld - Dynamic firewall demon
+- httpd - Apache Web Server
+- libvirtd - Virtualization demon
+- sshd - OpenSSH Server demon
 
 ## Project log
 
