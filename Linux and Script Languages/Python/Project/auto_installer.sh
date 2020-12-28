@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Create directory in user home folder
-mkdir ~/name_day
-cd ~/name_day
+sudo mkdir /usr/bin/name_day
+cd /usr/bin/name_day
 
 # URL's
 # Script

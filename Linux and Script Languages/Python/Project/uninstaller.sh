@@ -16,4 +16,4 @@ sudo systemctl daemon-reload
 sudo systemctl status name_day.service
 
 # Delete directory in user home folder
-rm -r ~/name_day
+sudo rm -r /usr/bin/name_day
