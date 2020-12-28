@@ -62,9 +62,9 @@ sudo cp service/name_day.service /lib/systemd/system/name_day.service
 
 # Make executable
 chmod +x installer.sh
-chmod +x service_restart.sh
-chmod +x service_start.sh
-chmod +x service_stop.sh
+chmod +x script/service_restart.sh
+chmod +x script/service_start.sh
+chmod +x script/service_stop.sh
 chmod +x uninstaller.sh
 
 # Reload systemd
