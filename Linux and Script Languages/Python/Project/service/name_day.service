@@ -2,7 +2,7 @@
 Description=A service that check todays names in Sweden and print to a file
 
 [Service]
-ExecStart=/usr/bin/python3 ~/name_day/name_day.py
+ExecStart=/usr/bin/python3 ~/name_day/__main__.py
 
 [Install]
 WantedBy=multi-user.target
