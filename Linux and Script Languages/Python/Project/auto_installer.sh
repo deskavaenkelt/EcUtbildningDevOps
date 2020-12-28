@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# root access
+sudo su
+
 # Create directory in user home folder
-sudo mkdir /usr/bin/name_day
+mkdir /usr/bin/name_day
 cd /usr/bin/name_day
 
 # URL's
@@ -30,53 +33,55 @@ uninstaller=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/m
 
 # Use wget to download all files
 # Script & Make executable
-sudo mkdir script && cd script
+mkdir script && cd script
 
-sudo wget -O service_restart.sh $service_restart
-sudo wget -O service_start.sh $service_start
-sudo wget -O service_stop.sh $service_stop
+wget -O service_restart.sh $service_restart
+wget -O service_start.sh $service_start
+wget -O service_stop.sh $service_stop
 
-sudo chmod +x script/service_restart.sh
-sudo chmod +x script/service_start.sh
-sudo chmod +x script/service_stop.sh
+chmod +x script/service_restart.sh
+chmod +x script/service_start.sh
+chmod +x script/service_stop.sh
 
 cd ..
 
 # Service
-sudo mkdir service && cd service
+mkdir service && cd service
 wget -O name_day.service $name_day_service
 cd ..
 
 # Utils
-sudo mkdir utils && cd utils
-sudo wget -O __init__.sh $init
-sudo wget -O api.sh $api
-sudo wget -O data_structure.py $data_structure
-sudo wget -O data_transformation.py $data_transformation
+mkdir utils && cd utils
+wget -O __init__.sh $init
+wget -O api.sh $api
+wget -O data_structure.py $data_structure
+wget -O data_transformation.py $data_transformation
 cd ..
 
 # Main & Make executable
-sudo wget -O __main__.py $main
-sudo wget -O auto_installer.py $auto_installer
-sudo wget -O installer.sh $installer
-sudo wget -O name_days.txt $name_days
-sudo wget -O README.md $readme
-sudo wget -O uninstaller.sh $uninstaller
+wget -O __main__.py $main
+wget -O auto_installer.py $auto_installer
+wget -O installer.sh $installer
+wget -O name_days.txt $name_days
+wget -O README.md $readme
+wget -O uninstaller.sh $uninstaller
 
-sudo chmod +x installer.sh
-sudo chmod +x uninstaller.sh
+chmod +x installer.sh
+chmod +x uninstaller.sh
 
 # Copy service file to systemd
-sudo cp service/name_day.service /lib/systemd/system/name_day.service
+cp service/name_day.service /lib/systemd/system/name_day.service
 
 # Reload systemd
-sudo systemctl daemon-reload
+systemctl daemon-reload
 
 # Enables Service
-sudo systemctl enable name_day.service
+systemctl enable name_day.service
 
 # Start Service
-sudo systemctl start name_day.service
+systemctl start name_day.service
 
 # Status Service
-sudo systemctl status name_day.service
+systemctl status name_day.service
+
+exit
