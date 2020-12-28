@@ -58,7 +58,7 @@ wget -O README.md $readme
 wget -O uninstaller.sh $uninstaller
 
 # Copy service file to systemd
-sudo cp /service/name_day.service /lib/systemd/system/name_day.service
+sudo cp service/name_day.service /lib/systemd/system/name_day.service
 
 # Make executable
 chmod +x installer.sh
