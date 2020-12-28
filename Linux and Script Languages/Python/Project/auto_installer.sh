@@ -33,7 +33,7 @@ uninstaller=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/m
 
 # Use wget to download all files
 # Script & Make executable
-mkdir script && cd script
+mkdir /usr/bin/name_day/script && cd /usr/bin/name_day/script
 
 wget -O service_restart.sh $service_restart
 wget -O service_start.sh $service_start
@@ -46,12 +46,12 @@ chmod +x script/service_stop.sh
 cd ..
 
 # Service
-mkdir service && cd service
+mkdir /usr/bin/name_day/service && cd /usr/bin/name_day/service
 wget -O name_day.service $name_day_service
 cd ..
 
 # Utils
-mkdir utils && cd utils
+mkdir /usr/bin/name_day/utils && cd /usr/bin/name_day/utils
 wget -O __init__.sh $init
 wget -O api.sh $api
 wget -O data_structure.py $data_structure
