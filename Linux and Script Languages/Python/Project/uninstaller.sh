@@ -9,6 +9,9 @@ sudo systemctl stop name_day.service
 # Status Service
 sudo systemctl status name_day.service
 
+# Reload systemd
+sudo systemctl daemon-reload
+
 # Delete Service
 sudo rm -d /lib/systemd/system/name_day.service
 
