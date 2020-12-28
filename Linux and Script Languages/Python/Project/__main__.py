@@ -3,7 +3,6 @@ import time
 from utils import response, sort_out_relevant_data_from, formatted_string
 from os.path import expanduser
 
-# TODO: fix
 home = expanduser("~")
 
 
@@ -17,7 +16,7 @@ def run_program():
         name_file.write(string)
 
 
-check_time_hour = 9
+check_time_hour = 1
 for_one_hour = 3600
 
 
