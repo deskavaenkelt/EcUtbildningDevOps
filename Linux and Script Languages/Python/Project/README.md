@@ -73,7 +73,7 @@
 
 ##### Link to installer:
 
-`curl https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/download_and_install.sh | bash`
+`curl https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/Linux%20and%20Script%20Languages/Python/Project/auto_installer.sh | bash`
 
 ## [Get the service up and running]
 
