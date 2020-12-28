@@ -5,6 +5,7 @@ sudo su
 
 # Create directory in user home folder
 mkdir /usr/bin/name_day
+chmod -R 777 /usr/bin/name_day
 cd /usr/bin/name_day
 
 # URL's
