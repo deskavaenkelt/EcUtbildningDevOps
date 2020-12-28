@@ -1,4 +1,4 @@
-from data_structure import DataStructure
+from utils.data_structure import DataStructure
 
 
 def sort_out_relevant_data_from(api_data):

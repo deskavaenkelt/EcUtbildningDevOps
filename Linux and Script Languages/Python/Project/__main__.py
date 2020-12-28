@@ -1,19 +1,23 @@
 import datetime
 import time
-import api
-from data_transformation import sort_out_relevant_data_from, formatted_string
+from utils import response, sort_out_relevant_data_from, formatted_string
+from os.path import expanduser
+
+# TODO: fix
+home = expanduser("~")
 
 
 def run_program():
-    string = formatted_string(sort_out_relevant_data_from(api.response()))
+    string = formatted_string(sort_out_relevant_data_from(response()))
 
-    with open('name_days.txt', 'a') as name_file:
+    # with open(f'{home}/name_day/name_days.txt', 'a') as name_file:  # Linux
+    with open('name_days.txt', 'a') as name_file:  # MacOS
         current_time = str(datetime.datetime.now()) + '\n'
         name_file.write(current_time)
         name_file.write(string)
 
 
-check_time_hour = 0
+check_time_hour = 9
 for_one_hour = 3600
 
 

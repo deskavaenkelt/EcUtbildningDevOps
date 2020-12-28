@@ -111,7 +111,7 @@ Finally, check the status of your service as following command.
 
 `sudo systemctl status name_day.service`
 
-![name_day_service_success.png](name_day_service_success.png)
+![name_day_service_success.png](img/name_day_service_success.png)
 
 Use below commands to stop, start and restart your service manually.
 
