@@ -29,11 +29,17 @@ uninstaller=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/m
 
 
 # Use wget to download all files
-# Script
+# Script & Make executable
 mkdir script && cd script
+
 wget -O service_restart.sh $service_restart
 wget -O service_start.sh $service_start
 wget -O service_stop.sh $service_stop
+
+chmod +x script/service_restart.sh
+chmod +x script/service_start.sh
+chmod +x script/service_stop.sh
+
 cd ..
 
 # Service
@@ -49,7 +55,7 @@ wget -O data_structure.py $data_structure
 wget -O data_transformation.py $data_transformation
 cd ..
 
-# Main
+# Main & Make executable
 wget -O __main__.py $main
 wget -O auto_installer.py $auto_installer
 wget -O installer.sh $installer
@@ -57,15 +63,11 @@ wget -O name_days.txt $name_days
 wget -O README.md $readme
 wget -O uninstaller.sh $uninstaller
 
+chmod +x installer.sh
+chmod +x uninstaller.sh
+
 # Copy service file to systemd
 sudo cp service/name_day.service /lib/systemd/system/name_day.service
-
-# Make executable
-chmod +x installer.sh
-chmod +x script/service_restart.sh
-chmod +x script/service_start.sh
-chmod +x script/service_stop.sh
-chmod +x uninstaller.sh
 
 # Reload systemd
 sudo systemctl daemon-reload
