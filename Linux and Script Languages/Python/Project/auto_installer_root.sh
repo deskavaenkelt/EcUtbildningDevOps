@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# Create directory in user home folder
+# root access
+sudo su
 
-mkdir ~/name_day && cd name_day
+# Create directory in user home folder
+mkdir /usr/bin/name_day
+chmod -R 777 /usr/bin/name_day
+cd /usr/bin/name_day
 
 # URL's
 # Script
@@ -30,7 +34,7 @@ uninstaller=https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/m
 
 # Use wget to download all files
 # Script & Make executable
-mkdir ~/name_day/script && cd ~/name_day/script
+mkdir /usr/bin/name_day/script && cd /usr/bin/name_day/script
 
 wget -O service_restart.sh $service_restart
 wget -O service_start.sh $service_start
@@ -43,12 +47,12 @@ chmod +x script/service_stop.sh
 cd ..
 
 # Service
-mkdir ~/name_day/service && cd ~/name_day/service
+mkdir /usr/bin/name_day/service && cd /usr/bin/name_day/service
 wget -O name_day.service $name_day_service
 cd ..
 
 # Utils
-mkdir ~/name_day/utils && cd ~/name_day/utils
+mkdir /usr/bin/name_day/utils && cd /usr/bin/name_day/utils
 wget -O __init__.sh $init
 wget -O api.sh $api
 wget -O data_structure.py $data_structure

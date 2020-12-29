@@ -9,8 +9,8 @@ home = expanduser("~")
 def run_program():
     string = formatted_string(sort_out_relevant_data_from(response()))
 
-    with open('/usr/bin/name_day/name_days.txt', 'a') as name_file:  # Linux
-    # with open('name_days.txt', 'a') as name_file:  # MacOS
+    # with open('/usr/bin/name_day/name_days.txt', 'a') as name_file:  # Linux
+    with open('name_days.txt', 'a') as name_file:  # MacOS
         current_time = str(datetime.datetime.now()) + '\n'
         name_file.write(current_time)
         name_file.write(string)
