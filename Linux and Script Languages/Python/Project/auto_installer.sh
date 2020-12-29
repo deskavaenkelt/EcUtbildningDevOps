@@ -70,15 +70,13 @@ chmod +x uninstaller.sh
 cp service/name_day.service /lib/systemd/system/name_day.service
 
 # Reload systemd
-systemctl daemon-reload
+sudo systemctl daemon-reload
 
 # Enables Service
-systemctl enable name_day.service
+sudo systemctl enable name_day.service
 
 # Start Service
-systemctl start name_day.service
+sudo systemctl start name_day.service
 
 # Status Service
-systemctl status name_day.service
-
-exit
+sudo systemctl status name_day.service
