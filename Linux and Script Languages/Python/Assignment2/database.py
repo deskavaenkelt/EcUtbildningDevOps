@@ -5,12 +5,12 @@ KEY = 'todos'
 
 def write_to_database(todo_list):
     with shelve.open('todo_database') as database:
-        database['todos'] = todo_list
+        database[KEY] = todo_list
 
 
 def read_from_database():
     with shelve.open('todo_database') as database:
-        return database['todos']
+        return database[KEY]
 
 
 def clear_database():
@@ -20,4 +20,4 @@ def clear_database():
 
 def what_is_there():
     with shelve.open('todo_database') as database:
-        print(database['todos'][0].description)
+        print(database[KEY][0].description)
