@@ -18,7 +18,7 @@ def division_by_zero(posted_data) -> bool:
 
 def verify_validity_of_posted_data(posted_data, function_name) -> int:
     if add_or_sub_or_multi(function_name):
-        if any_variable_is_missing():
+        if any_variable_is_missing(posted_data):
             return 301  # Missing parameter
         else:
             return 200
