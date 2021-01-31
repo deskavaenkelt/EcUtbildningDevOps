@@ -93,3 +93,5 @@ js/egetSkrap.js
 .history
 venv/
 __pycache__
+
+Extras/Python REST API/PythonRestApi_CrudFlaskMysql/.env
