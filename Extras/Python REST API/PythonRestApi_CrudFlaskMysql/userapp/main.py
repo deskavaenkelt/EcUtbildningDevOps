@@ -3,39 +3,14 @@ from flask import jsonify
 from flask import request
 
 from app import app
-from db_config import mysql
-from encryption import generate_hashed_password
+from helpers.encryption import generate_hashed_password
+from userapp.db import mysql, location_name_to_id
+from users import add_user
 
 
 @app.route('/add', methods=['POST'])
-def add_user():
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    try:
-        _json = request.json
-        _name = _json['name']
-        _email = _json['email']
-        _password = _json['pwd']
-        # validate the received values
-        if _name and _email and _password and request.method == 'POST':
-            # do not save password as a plain text
-            _hashed_password = generate_hashed_password(_password)
-            # save edits
-            sql = "INSERT INTO tbl_user(user_name, user_email, user_password) VALUES(%s, %s, %s)"
-            data = (_name, _email, _hashed_password,)
-
-            cursor.execute(sql, data)
-            conn.commit()
-            resp = jsonify('User added successfully!')
-            resp.status_code = 200
-            return resp
-        else:
-            return not_found()
-    except Exception as e:
-        print(e)
-    finally:
-        cursor.close()
-        conn.close()
+def add():
+    return add_user(request)
 
 
 @app.route('/users')
@@ -53,6 +28,13 @@ def users():
     finally:
         cursor.close()
         conn.close()
+
+
+@app.route('/locations', methods=['POST'])
+def location_id():
+    _json = request.json
+    _location_name = _json['address']
+    return location_name_to_id(_location_name)
 
 
 @app.route('/user/<int:id>')
