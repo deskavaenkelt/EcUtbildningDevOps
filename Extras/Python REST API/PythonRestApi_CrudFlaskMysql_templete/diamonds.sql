@@ -17,7 +17,7 @@ CREATE TABLE specifications
     z       FLOAT
 );
 
-# DROP TABLE specifications;
+#DROP TABLE specifications;
 
 # INSERT INTO specifications (carat, cut, color, clarity, depth, table_d, price, x, y, z) VALUES ();
 
