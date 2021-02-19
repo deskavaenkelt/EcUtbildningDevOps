@@ -270,6 +270,8 @@ Write in your report, examples of MongoDB and SQL questions that are of the char
 
 ## Result MySQL
 
+I have been working in IntelliJ and mad the connections to the databases in there.
+
 ### Server setup
 
 Installed an TurnKey Server with MySQL/MariaDB (in a LXC) and assigned it the ip-address 192.168.1.20.
@@ -540,10 +542,10 @@ Insert data:
 
 ```javascript
 db.locations.insertMany([
-  { country: "SE", address: "Vimmerbygatan 20" },
-  { country: "US", address: "Asteroid road 5" },
-  { country: "US", address: "Comet road 41" },
-  { country: "SE", address: "Brunnsgatan 7" }
+    { country: "SE", address: "Vimmerbygatan 20" },
+    { country: "US", address: "Asteroid road 5" },
+    { country: "US", address: "Comet road 41" },
+    { country: "SE", address: "Brunnsgatan 7" }
 ])
 ```
 
@@ -585,6 +587,69 @@ Could not find the names in the db so replaced them with the first 4 entries:
 2. Bank account **'Faith', 'Scoon'** must be linked to a location with the address **Asteroid road 5**
 3. Bank account **'Jody', 'Merrall'** must be linked to a location with the address **Vimmerbygatan 20**
 4. Bank account **'Modesta', 'Featherstonhaugh'** must be linked to a location with the address **Comet road 41**
+
+#### First attempt
+
+**Get id for address**
+
+```javascript
+db.locations.find(
+    { $and: [{ country: "SE" }, { address: "Vimmerbygatan 20" }] }, { id: 1, _id: 0 })
+db.locations.find(
+    { $and: [{ country: "US", address: "Asteroid road 5" }] }, { id: 1, _id: 0 })
+db.locations.find(
+    { $and: [{ country: "US", address: "Comet road 41" }] }, { id: 1, _id: 0 })
+db.locations.find(
+    { $and: [{ country: "SE", address: "Brunnsgatan 7" }] }, { id: 1, _id: 0 })
+```
+
+**Result:**
+
+```
+1
+2
+3
+4
+```
+
+**Get id for user**
+
+```javascript
+db.bank_accounts.find(
+        { $and: [{ first_name: "Gray", last_name: "Geldard" }] }, { id: 1, _id: 0 })
+db.bank_accounts.find(
+        { $and: [{ first_name: "Faith", last_name: "Scoon" }] }, { id: 1, _id: 0 })
+db.bank_accounts.find(
+        { $and: [{ first_name: "Jody", last_name: "Merrall" }] }, { id: 1, _id: 0 })
+db.bank_accounts.find(
+        { $and: [{ first_name: "Modesta", last_name: "Featherstonhaugh" }] }, { id: 1, _id: 0 })
+```
+
+**Result:**
+
+```
+2
+3
+4
+5
+```
+
+Insert into relations collections:
+
+```javascript
+db.relationship.insertMany([
+    { bank_accounts_id: 2, locations_id: 4 },
+    { bank_accounts_id: 3, locations_id: 2 },
+    { bank_accounts_id: 4, locations_id: 1 },
+    { bank_accounts_id: 5, locations_id: 3 },
+])
+```
+
+And about here I realized that I had been trying to make a relationship database with MongoDB... 
+
+#### Second attempt
+
+
 
 ### MongoDB part 3
 
