@@ -553,7 +553,7 @@ db.locations.insertMany([
 
 ### MongoDB part 2
 
-In this step I created the relationship table:
+In this step I created the relationship table (more on this later):
 
 | variable          |
 | ----------------- |
@@ -828,6 +828,18 @@ db.bank_accounts.count()
 3. How did you solve parts 2 and 3 in MongoDB? (you do not need to make a complete solution, but describe in a rough way
    how you had done)
     - I solved it.
+    - I did insert the location data into an already existing document.
+    - `db.bank_accounts.find({ location: { country: "SE" } })`
 4. What information do you need to be able to log in to someone else's database?
+    - Ip-address
+    - Port
+    - Username
+    - Password
 5. Why would you like to use a database?
+    - If you would likt to search on data
+    - To handle custumers, and their historical purchases
+    - And so on...
 6. Mention some other places / situations in addition to databases that CRUD is used
+    - In a game where you create/delete a characters who can level up and so on
+    - File handling
+    - Updates to your Operating System
