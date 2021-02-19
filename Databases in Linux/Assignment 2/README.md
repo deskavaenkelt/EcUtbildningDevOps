@@ -166,7 +166,7 @@ Create the Table "locations"
 
 ### Fill in Report
 
-- [ ] Report
+- [x] Report
 
 ## Plan part 2
 
@@ -207,11 +207,7 @@ Create a Relationship table between locations and bank_accounts
 
 ### MongoDB
 
-- [ ] Create Collection
-    - Field id
-    - Field bank_accounts_id
-    - Field locations_id
-- [ ] Insert data
+- [x] Insert data
 
 ### Data
 
@@ -222,7 +218,7 @@ Create a Relationship table between locations and bank_accounts
 
 ### Fill in Report
 
-- [ ] Report
+- [x] Report
 
 ## Plan part 3
 
@@ -236,13 +232,13 @@ Now we will perform searches on our data.
 
 ### MongoDB
 
-- [ ] Write a question in MySQL that retrieves all bank accounts that are linked to "locations" where the country is "
+- [x] Write a question in MySQL that retrieves all bank accounts that are linked to "locations" where the country is "
   SE".
-- [ ] Write in your report how you did.
+- [x] Write in your report how you did.
 
 ### Fill in Report
 
-- [ ] Report
+- [x] Report
 
 ## Plan part 4
 
@@ -259,10 +255,10 @@ Write in your report, examples of MongoDB and SQL questions that are of the char
 
 ### MongoDB
 
-- [ ] Create
-- [ ] Read
-- [ ] Update
-- [ ] Delete
+- [x] Create
+- [x] Read
+- [x] Update
+- [x] Delete
 
 # Result and Report
 
