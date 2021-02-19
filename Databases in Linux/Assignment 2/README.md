@@ -437,7 +437,7 @@ VALUES ((SELECT id FROM bank_accounts WHERE first_name = 'Corbin' AND last_name 
 Write a question in MySQL that retrieves all bank accounts that are linked to "locations" where the country is " SE".
 
 ```mariadb
-SELECT b.first_name, b.last_name
+SELECT b.first_name, b.last_name, l.country
 FROM relationship r
          INNER JOIN bank_accounts b ON r.bank_accounts_id = b.id
          INNER JOIN locations l on r.locations_id = l.id
@@ -514,7 +514,7 @@ for server setup:
 - Connect to server
     - `ssh lars@192.168.1.22`
 - Import JSON data to MongoDB in terminal of Server
-    - `mongoimport --db bank --collection bank --file ./bank_accounts.json --jsonArray`
+    - `mongoimport --db bank --collection bank_accounts --file ./bank_accounts.json --jsonArray`
 - Verify import
     - `mongo` in terminal
     - `show dbs` in mongo shell
@@ -549,30 +549,19 @@ db.locations.insertMany([
 ])
 ```
 
-[Source code](mongodb_files/2_part_1.sql)
+[Source code](mongodb_files/part_1.js)
 
 ### MongoDB part 2
 
 In this step I created the relationship table:
 
-| variable          | properties                       |
-| ----------------- | -------------------------------- |
-| id                | INT, PRIMARY KEY, AUTO_INCREMENT |
-| bank_accounts_id  | INT, FOREIGN KEY                 |
-| locations_id      | INT, FOREIGN KEY                 |
+| variable          |
+| ----------------- |
+| id                |
+| bank_accounts_id  |
+| locations_id      |
 
 The code for creating the table:
-
-```mariadb
-CREATE TABLE relationship
-(
-    id               INT PRIMARY KEY AUTO_INCREMENT,
-    bank_accounts_id INT,
-    locations_id     INT,
-    FOREIGN KEY (bank_accounts_id) REFERENCES bank_accounts (id),
-    FOREIGN KEY (locations_id) REFERENCES locations (id)
-);
-```
 
 This information should be inserted:
 
@@ -616,13 +605,13 @@ db.locations.find(
 
 ```javascript
 db.bank_accounts.find(
-        { $and: [{ first_name: "Gray", last_name: "Geldard" }] }, { id: 1, _id: 0 })
+    { $and: [{ first_name: "Gray", last_name: "Geldard" }] }, { id: 1, _id: 0 })
 db.bank_accounts.find(
-        { $and: [{ first_name: "Faith", last_name: "Scoon" }] }, { id: 1, _id: 0 })
+    { $and: [{ first_name: "Faith", last_name: "Scoon" }] }, { id: 1, _id: 0 })
 db.bank_accounts.find(
-        { $and: [{ first_name: "Jody", last_name: "Merrall" }] }, { id: 1, _id: 0 })
+    { $and: [{ first_name: "Jody", last_name: "Merrall" }] }, { id: 1, _id: 0 })
 db.bank_accounts.find(
-        { $and: [{ first_name: "Modesta", last_name: "Featherstonhaugh" }] }, { id: 1, _id: 0 })
+    { $and: [{ first_name: "Modesta", last_name: "Featherstonhaugh" }] }, { id: 1, _id: 0 })
 ```
 
 **Result:**
@@ -645,14 +634,200 @@ db.relationship.insertMany([
 ])
 ```
 
-And about here I realized that I had been trying to make a relationship database with MongoDB... 
+And about here I realized that I had been trying to make a relationship database with MongoDB...
+
+```javascript
+// Correction
+db.relationship.drop()
+```
 
 #### Second attempt
 
+Tried for a while and could not get it to work, so I just put the code here with no mor explanation.
 
+```javascript
+// Part 2 - Second attempt
+db.locations.find()
+db.bank_accounts.find()
+
+gray_update_criteria = { $and: [{ first_name: "Gray", last_name: "Geldard" }] }
+gray_update_address = {
+    $set: {
+        address: [
+            {
+                $ref: "locations",
+                $id: ObjectId("602ed661a4601e69cac21163")
+            }
+        ]
+    }
+}
+
+faith_update_criteria = { $and: [{ first_name: "Faith", last_name: "Scoon" }] }
+faith_update_address = {
+    $set: {
+        address: [
+            {
+                $ref: "locations",
+                $id: ObjectId("602ed661a4601e69cac21161")
+            }
+        ]
+    }
+}
+
+jody_update_criteria = { $and: [{ first_name: "Jody", last_name: "Merrall" }] }
+jody_update_address = {
+    $set: {
+        address: [
+            {
+                $ref: "locations",
+                $id: ObjectId("602ed661a4601e69cac21160")
+            }
+        ]
+    }
+}
+
+modesta_update_criteria = { $and: [{ first_name: "Modesta", last_name: "Featherstonhaugh" }] }
+modesta_update_address = {
+    $set: {
+        address: [
+            {
+                $ref: "locations",
+                $id: ObjectId("602ed661a4601e69cac21162")
+            }
+        ]
+    }
+}
+
+option = { multi: true }
+
+db.bank_accounts.find(gray_update_criteria)
+db.bank_accounts.find(faith_update_criteria)
+db.bank_accounts.find(jody_update_criteria)
+db.bank_accounts.find(modesta_update_criteria)
+
+db.bank_accounts.updateOne(gray_update_criteria, gray_update_address)
+db.bank_accounts.updateOne(faith_update_criteria, faith_update_address)
+db.bank_accounts.updateOne(jody_update_criteria, jody_update_address)
+db.bank_accounts.updateOne(modesta_update_criteria, modesta_update_address)
+
+db.bank_accounts.find()
+
+db.bank_accounts.aggregate({
+    $lookup: {
+        from: "locations",
+        localField: "address.$id",
+        foreignField: "locations._id",
+        as: "locations"
+    }
+})
+```
+
+#### Third attempt
+
+I did change approach to just solve the problem in a simple maner.
+
+```javascript
+db.bank_accounts.drop()
+db.bank_accounts.find()
+
+db.bank_accounts.updateOne(
+    { $and: [{ first_name: "Gray", last_name: "Geldard" }] },
+    { $set: { location: [{ country: "SE" }, { address: "Brunnsgatan 7" }] } }
+)
+
+db.bank_accounts.updateOne(
+    { $and: [{ first_name: "Faith", last_name: "Scoon" }] },
+    { $set: { location: [{ country: "US" }, { address: "Asteroid road 5" }] } }
+)
+
+db.bank_accounts.updateOne(
+    { $and: [{ first_name: "Jody", last_name: "Merrall" }] },
+    { $set: { location: [{ country: "SE" }, { address: "Vimmerbygatan 20" }] } }
+)
+
+db.bank_accounts.updateOne(
+    { $and: [{ first_name: "Modesta", last_name: "Featherstonhaugh" }] },
+    { $set: { location: [{ country: "US" }, { address: "Comet road 41" }] } }
+)
+```
+
+[Source code](mongodb_files/part_2.js)
 
 ### MongoDB part 3
 
+Write a question in MySQL that retrieves all bank accounts that are linked to "locations" where the country is " SE".
+
+```javascript
+db.bank_accounts.find({ location: { country: "SE" } })
+```
+
+**Result**
+
+![Result part 3 mongodb](img/mongo_part_3_result.png)
+
+[Source code](mongodb_files/part_3.js)
+
 ### MongoDB part 4
 
+Examples of CRUD functionality in my database:
+
+```javascript
+// CREATE
+db.bank_accounts.count()
+db.bank_accounts.insertOne(
+    {
+        id: 1001,
+        first_name: "Larss",
+        last_name: "Dsves",
+        holding: 667
+    }
+)
+db.bank_accounts.count()
+
+
+// READ
+db.bank_accounts.find()
+db.bank_accounts.find({ first_name: "Larss" })
+db.bank_accounts.find({ "holding": 667 })
+db.bank_accounts.find({ "id": 667 })
+
+
+// UPDATE
+update_criteria = { id: 1001 }
+db.bank_accounts.find(update_criteria)
+
+update_frist_name = { $set: { first_name: "Lars" } }
+update_last_name = { $set: { last_name: "Dsve" } }
+update_holding = { $set: { holding: 666 } }
+
+db.bank_accounts.updateOne(update_criteria, update_frist_name)
+db.bank_accounts.updateOne(update_criteria, update_last_name)
+db.bank_accounts.updateOne(update_criteria, update_holding)
+
+after_update_criteria = { first_name: "Lars" }
+db.bank_accounts.find(after_update_criteria)
+
+
+// DELETE
+db.bank_accounts.count()
+delete_criteria = { first_name: "Lars" }
+db.bank_accounts.find(delete_criteria)
+db.bank_accounts.deleteOne(delete_criteria)
+db.bank_accounts.find(delete_criteria)
+db.bank_accounts.count()
+```
+
+[Source code](mongodb_files/part_4.js)
+
 ## Result questions
+
+1. What is the equivalent in MongoDB to a foreign key?
+    - DBRef `$ref`
+2. What is the equivalent of a SELECT in MongoDB?
+    - `.find()`, `.find({})`
+3. How did you solve parts 2 and 3 in MongoDB? (you do not need to make a complete solution, but describe in a rough way
+   how you had done)
+    - I solved it.
+4. What information do you need to be able to log in to someone else's database?
+5. Why would you like to use a database?
+6. Mention some other places / situations in addition to databases that CRUD is used
