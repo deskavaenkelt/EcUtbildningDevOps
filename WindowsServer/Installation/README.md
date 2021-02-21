@@ -1,6 +1,22 @@
 # Installation of Windows Server
 
-## Requirements
+## Table of content
+
+- [Requirements](#requirements)
+    - [Minimum requirements](#minimum-requirements)
+    - [My configurations](#my-computer)
+        - [My computer](#my-computer)
+        - [Domain Controller](#domain-controller)
+        - [Member Server](#member-server)
+        - [Client Server](#client-server)
+        - [Core Server](#core-server)
+- [Installation](#installation)
+    - [VMWare Fusion](#vmware-fusion)
+    - [Installation of Windows Server 2016 in pictures](#installation-of-windows-server-2016-in-pictures)
+    - [Installing VMware Tools in a Fusion virtual machine running Windows in pictures](#installing-vmware-tools-in-a-fusion-virtual-machine-running-windows-in-pictures)
+    - [Change network adapter in pictures](#change-network-adapter-in-pictures)
+
+# Requirements
 
 - [VMWare Fusion][1] (in my case), VirtualBox or other Virtual Machine Manager
 - [Download Windows Server][2]
@@ -15,16 +31,6 @@
 
 [4]: https://docs.microsoft.com/en-us/windows-server/get-started-19/sys-reqs-19
 
-## My computer
-
-I have a rather good setup, so I can give each VM a lot of resources. So you can set up each VM with lesser resources.
-
-My computer:
-
-- 6 Cores with hyper-threading
-- 64GB RAM
-- 500 GB Free SSD drive
-
 ## Minimum requirements
 
 | Property         | Value              |
@@ -36,7 +42,17 @@ My computer:
 
 ## My configurations
 
-## Domain Controller
+### My computer
+
+I have a rather good setup, so I can give each VM a lot of resources. So you can set up each VM with lesser resources.
+
+My computer:
+
+- 6 Cores with hyper-threading
+- 64GB RAM
+- 500 GB Free SSD drive
+
+### Domain Controller
 
 | Property          | Value               |
 | ----------------- | ------------------- |
@@ -46,7 +62,17 @@ My computer:
 | RAM               | 4096 MB Server Core |
 | HDD               | 60 GB               |
 
-## Client Server
+### Member Server
+
+| Property          | Value               |
+| ----------------- | ------------------- |
+| Windows Version   | `Windows Server 2016 - Datacenter GUI` |
+| Computer Name     | `LAB2-DC2`          |
+| CPU               | 6 cores             |
+| RAM               | 4096 MB Server Core |
+| HDD               | 60 GB               |
+
+### Client Server
 
 | Property          | Value               |
 | ----------------- | ------------------- |
@@ -56,7 +82,7 @@ My computer:
 | RAM               | 2048 MB Server Core |
 | HDD               | 30 GB               |
 
-## Core Server
+### Core Server
 
 | Property          | Value               |
 | ----------------- | ------------------- |
@@ -65,6 +91,8 @@ My computer:
 | CPU               | 6 cores             |
 | RAM               | 2048 MB Server Core |
 | HDD               | 30 GB               |
+
+# Installation
 
 ## VMWare Fusion
 
@@ -88,3 +116,38 @@ It's very similar installation procedure for Windows Server and Windows 10.
    will get a 180 days trail edition.
 5. In the settings for your VM in VMWare Fusion, klick on "Network Adapter", change to "Private" under "custom".
 6. Then set the network settings according to the specified list under [servers](../Servers)
+
+## Installation of Windows Server 2016 in pictures
+
+![Step 1](img/step1.png)
+![Step 2](img/step2.png)
+![Step 3](img/step3_standard_core.png)
+![Step 3](img/step3_data_center_gui.png)
+![Step 4](img/step4.png)
+![Step 5](img/step5.png)
+![Step 6](img/step6.png)
+![Step 7](img/step7.png)
+![Step 8](img/step8.png)
+![Step 9](img/step9.png)
+![Step 10](img/step10.png)
+![Step 11](img/step11.png)
+![Step 12](img/step12.png)
+![Step 13](img/step13.png)
+![Step 14](img/step14.png)
+
+## Installing VMware Tools in a Fusion virtual machine running Windows in pictures
+
+![Step 15](img/step15.png)
+![Step 16](img/step16.png)
+![Step 17](img/step17.png)
+![Step 18](img/step18.png)
+![Step 19](img/step19.png)
+![Step 20](img/step20.png)
+![Step 21](img/step21.png)
+![Step 22](img/step22.png)
+![Step 23](img/step23.png)
+
+## Change network adapter in pictures
+
+![Step 24](img/step24.png)
+![Step 25](img/step25.png)
