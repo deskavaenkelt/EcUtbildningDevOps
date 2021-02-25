@@ -18,7 +18,12 @@
 
 # Requirements
 
-- [VMWare Fusion][1] (in my case), VirtualBox or other Virtual Machine Manager
+- Virtual Manager
+    - [VMWare Fusion][1] (in my case)
+    - [VMware Workstation 16 Player
+      ][5]
+    - VirtualBox
+    - Other Virtual Machine Manager
 - [Download Windows Server][2]
     - Windows Server 2016 - ISO [Requirements][3]
     - Windows Server 2019 - ISO [Requirements][4]
@@ -30,6 +35,8 @@
 [3]: https://docs.microsoft.com/en-us/windows-server/get-started/system-requirements
 
 [4]: https://docs.microsoft.com/en-us/windows-server/get-started-19/sys-reqs-19
+
+[5]: https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html
 
 ## Minimum requirements
 
@@ -116,7 +123,6 @@ It's very similar installation procedure for Windows Server and Windows 10.
    will get a 180 days trail edition.
 5. In the settings for your VM in VMWare Fusion, klick on "Network Adapter", change to "Private" under "custom".
 6. Then set the network settings according to the specified list under [servers](../Servers)
-
 
 ## VMware Workstation (Windows/Linux) Player/Pro (Pro evaluation used here) in Pictures
 
