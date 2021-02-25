@@ -1,68 +1,55 @@
-# Active Directory
+# Active Directory - Installation
 
 ## Table of content
 
-- [Installation](#installation)
-    - [Configure network](#configure-network)
-    - [Add Feature Domain Controller](#add-feature-domain-controller)
-    - [Deployment Configuration](#deployment-configuration)
-    - [PowerShell add additional Domain Controller on Member Server ](#powershell-add-additional-domain-controller-on-member-server-lab2-dc2)
+- [Configure network](#configure-network)
+- [Add Feature Domain Controller](#add-feature-domain-controller)
+- [Deployment Configuration](#deployment-configuration)
+- [PowerShell add additional Domain Controller on Member Server ](#powershell-add-additional-domain-controller-on-member-server-lab2-dc2)
 
-# Installation
+# Configure network
 
-## Configure network
+If needed check or not done already check out [Network configuration](../../Network)
 
-1. Open Server Manager
-2. Click on Computer name and set it to what you want (in my case `LAB2-DC1`) then reboot
-3. Set static IP if not set already
-    - Click on ethernet
-    - Right klick Ethernet0 and klick on properties  
-      ![ethernet_setup_step_1](img/ethernet_setup_step_1.png)
-    - Dubble klick on "Internet Protocol Version 4 (TCP/IPv4)"  
-      ![ethernet_setup_step_2](img/ethernet_setup_step_2.png)
-    - Enter the following  
-      ![ethernet_setup_step_3](img/ethernet_setup_step_3.png)
-    - Press OK end close all windows
+# Add Feature Domain Controller
 
-## Add Feature Domain Controller
-
-4. Now we add roles and features  
+1. Now we add roles and features  
    ![add_role_or_features](img/add_role_or_features.png)
-5. Next
-6. **Role-based or feature-based installation** > Next
-7. Choose your computer name `LAB2-DC1` > Next
-8. Choose "Active Directory Domain Services", klick "Add features" in the pop-up window then klick next
-9. No more features ar needed to add so klick on Next
-10. Click Next on the informative screen
-11. Click Install
+2. Next
+3. **Role-based or feature-based installation** > Next
+4. Choose your computer name `LAB2-DC1` > Next
+5. Choose "Active Directory Domain Services", klick "Add features" in the pop-up window then klick next
+6. No more features ar needed to add so klick on Next
+7. Click Next on the informative screen
+8. Click Install
     - The service is now being installed, but the feature is not activated.
-12. When ready klick on "Promote this server to a domain controller"
+9. When ready klick on "Promote this server to a domain controller"
     - If you already clicked on Close
     - There is a notification icon that you can click on  
       ![notification_icon](img/notification_icon.png)
 
-## Deployment Configuration
+# Deployment Configuration
 
-13. Choose "Add new forest"
+10. Choose "Add new forest"
     - Root domain name: `LAB2.LOCAL`
     - Next
-14. Domain Controller Options:
+11. Domain Controller Options:
     - Functional level: Windows server 2016 (minimum level of our domain controllers)
     - Type the Directory Services Restore Mode (DSRM) password
     - Next
-15. DNS Options
+12. DNS Options
     - Next
-16. Additional Options
+13. Additional Options
     - The NetBIOS domain name: `LAB2`
     - Next
-17. Paths
+14. Paths
     - Next
-18. Review Options
+15. Review Options
     - Next
-19. Prerequisites Check
+16. Prerequisites Check
     - Install
 
-## PowerShell add additional Domain Controller on Member Server `LAB2-DC2`
+# PowerShell add additional Domain Controller on Member Server `LAB2-DC2`
 
 ```powershell
 Install-WindowsFeature ad-domain-services

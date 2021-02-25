@@ -2,7 +2,7 @@
 
 In my case since I don't have DHCP-Server activated, yet I set the IP-Addresses manually.
 
-Don't forget to set a static IP-address before this step if you follow this tutorial. [Instructions here in Active Directory section](../../ActiveDirectory)
+Don't forget to set a static IP-address before this step if you follow this tutorial. [Instructions here in Network section](../../Network)
 
 ## Table of content
 
