@@ -20,8 +20,8 @@
 
 - Virtual Manager
     - [VMWare Fusion][1] (in my case)
-    - [VMware Workstation 16 Player
-      ][5]
+    - [VMware Workstation 16 Player][5]
+    - [VMware Workstation 16 Pro][6]
     - VirtualBox
     - Other Virtual Machine Manager
 - [Download Windows Server][2]
@@ -37,6 +37,8 @@
 [4]: https://docs.microsoft.com/en-us/windows-server/get-started-19/sys-reqs-19
 
 [5]: https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html
+
+[5]: https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html
 
 ## Minimum requirements
 
