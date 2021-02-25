@@ -94,9 +94,9 @@ My computer:
 
 # Installation
 
-## VMWare Fusion
-
 It's very similar installation procedure for Windows Server and Windows 10.
+
+## VMWare Fusion (MacOS)
 
 1. [Installing Windows 10 as a guest operating system in VMware Fusion](https://kb.vmware.com/s/article/2128765
    )
@@ -116,6 +116,21 @@ It's very similar installation procedure for Windows Server and Windows 10.
    will get a 180 days trail edition.
 5. In the settings for your VM in VMWare Fusion, klick on "Network Adapter", change to "Private" under "custom".
 6. Then set the network settings according to the specified list under [servers](../Servers)
+
+
+## VMware Workstation (Windows/Linux) Player/Pro (Pro evaluation used here) in Pictures
+
+![Step 1](img/vmw_workstation/step_1.png)  
+![Step 2](img/vmw_workstation/step_2.png)  
+![Step 3](img/vmw_workstation/step_3.png)  
+![Step 4](img/vmw_workstation/step_4.png)  
+![Step 5](img/vmw_workstation/step_5.png)  
+![Step 6](img/vmw_workstation/step_6.png)  
+![Step 7](img/vmw_workstation/step_7.png)  
+![Step 8](img/vmw_workstation/step_8.png)  
+![Step 9](img/vmw_workstation/step_9.png)  
+![Step 10](img/vmw_workstation/step_10.png)  
+![Step 11](img/vmw_workstation/step_11.png)
 
 ## Installation of Windows Server 2016 in pictures
 
@@ -149,5 +164,5 @@ It's very similar installation procedure for Windows Server and Windows 10.
 
 ## Change network adapter in pictures
 
-![Step 24](img/step24.png)
+![Step 24](img/step24.png)  
 ![Step 25](img/step25.png)
