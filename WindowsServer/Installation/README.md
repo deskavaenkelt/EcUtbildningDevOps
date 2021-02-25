@@ -129,48 +129,81 @@ It's very similar installation procedure for Windows Server and Windows 10.
 ## VMware Workstation (Windows/Linux) Player/Pro (Pro evaluation used here) in Pictures
 
 ![Step 1](img/vmw_workstation/step_1.png)  
+
 ![Step 2](img/vmw_workstation/step_2.png)  
+
 ![Step 3](img/vmw_workstation/step_3.png)  
+
 ![Step 4](img/vmw_workstation/step_4.png)  
+
 ![Step 5](img/vmw_workstation/step_5.png)  
+
 ![Step 6](img/vmw_workstation/step_6.png)  
+
 ![Step 7](img/vmw_workstation/step_7.png)  
+
 ![Step 8](img/vmw_workstation/step_8.png)  
+
 ![Step 9](img/vmw_workstation/step_9.png)  
+
 ![Step 10](img/vmw_workstation/step_10.png)  
+
 ![Step 11](img/vmw_workstation/step_11.png)
 
 ## Installation of Windows Server 2016 in pictures
 
 ![Step 1](img/step1.png)
+
 ![Step 2](img/step2.png)
+
 ![Step 3](img/step3_standard_core.png)
+
 ![Step 3](img/step3_data_center_gui.png)
+
 ![Step 4](img/step4.png)
+
 ![Step 5](img/step5.png)
+
 ![Step 6](img/step6.png)
+
 ![Step 7](img/step7.png)
+
 ![Step 8](img/step8.png)
+
 ![Step 9](img/step9.png)
+
 ![Step 10](img/step10.png)
+
 ![Step 11](img/step11.png)
+
 ![Step 12](img/step12.png)
+
 ![Step 13](img/step13.png)
+
 ![Step 14](img/step14.png)
 
 ## Installing VMware Tools in a Fusion virtual machine running Windows in pictures
 
 ![Step 15](img/step15.png)
+
 ![Step 16](img/step16.png)
+
 ![Step 17](img/step17.png)
+
 ![Step 18](img/step18.png)
+
 ![Step 19](img/step19.png)
+
 ![Step 20](img/step20.png)
+
 ![Step 21](img/step21.png)
+
 ![Step 22](img/step22.png)
+
 ![Step 23](img/step23.png)
 
 ## Change network adapter in pictures
 
-![Step 24](img/step24.png)  
+![Step 24](img/step24.png)
+
 ![Step 25](img/step25.png)
