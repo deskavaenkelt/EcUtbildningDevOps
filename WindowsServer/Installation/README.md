@@ -38,7 +38,7 @@
 
 [5]: https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html
 
-[5]: https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html
+[6]: https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html
 
 ## Minimum requirements
 

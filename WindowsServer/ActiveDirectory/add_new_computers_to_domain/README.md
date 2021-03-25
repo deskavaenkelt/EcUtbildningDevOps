@@ -6,23 +6,41 @@ Don't forget to set a static IP-address before this step if you follow this tuto
 
 ## Table of content
 
+- [Add Computer before connecting to domain](#add-computer-before-connecting-to-domain)
 - [Set computer name](#set-computer-name)
-- [Add Computer to an Existing Domain](#add-computer-to-an-existing-domain)
+- [Add Windows Server to an Existing Domain](#add-windows-server-to-an-existing-domain)
+- [Add an existing Windows 10 computer to an Existing Domain](#add-an-existing-windows-10-computer-to-an-existing-domain)
+- [Add a newly installed Windows 10 computer to an Existing Domain](#add-a-newly-installed-windows-10-computer-to-an-existing-domain)
 - [](#)
 - [](#)
-- [](#)
+
+# Add Computer before connecting to domain
+
+There is the possibility to add a computer to the domain before it is connected to the network.
+
+In "Active Directory Users and Computers"
+
+![Active Directory Users and Computers](img/aduac_1.png)
+
+![Active Directory Users and Computers](img/aduac_2.png)
+
+![Active Directory Users and Computers](img/aduac_3.png)
+
+![Active Directory Users and Computers](img/aduac_4.png)
+
+![Active Directory Users and Computers](img/aduac_5.png)
 
 # Set computer name
 
-Right klick the `Start Menu` > Klick `System` 
+Right Click the `Start Menu` > Click `System` 
 
 ![computer_name_part_1](img/computer_name_part_1.png)
 
-Klick `Advanced System Settings`
+Click `Advanced System Settings`
 
 ![computer_name_part_2](img/computer_name_part_2.png)
 
-Klick `Computer Name` -> `Change...`
+Click `Computer Name` -> `Change...`
 
 ![computer_name_part_3](img/computer_name_part_3.png)
 
@@ -32,9 +50,9 @@ Enter a new `Computer Name` OR go to next part to add server/client to domain
 
 Press `OK` and restart your computer.
 
-# Add Computer to an Existing Domain
+# Add Windows Server to an Existing Domain
 
-Klick on "Member of Domain", enter your domain and klick `OK`
+Click on "Member of Domain", enter your domain and Click `OK`
 
 ![computer_name_part_5](img/computer_name_part_5.png)
 
@@ -61,3 +79,9 @@ Press `Restart Now`
 Login screen after reboot, log in with any valid user.
 
 ![computer_name_part_10](img/computer_name_part_11.png)
+
+# Add an existing Windows 10 computer to an Existing Domain
+
+# Add a newly installed Windows 10 computer to an Existing Domain
+
+
