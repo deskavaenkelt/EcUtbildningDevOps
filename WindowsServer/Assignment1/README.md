@@ -8,18 +8,19 @@
     - [Create a Windows Server](#create-a-windows-server)
     - [Starting criteria](#starting-criteria)
     - [Network](#network)
-    - [Router VM](#router-vm)
     - [Windows Server DC1](#windows-server-dc1)
-        - [Create DSVE-DC1 VM](#create-dsve-dc1-vm)
-        - [Install the role Domain Controller](#install-the-role-domain-controller)
-        - [Create users](#create-users)
     - [Windows 10](#windows-10)
-    - [](#)
-- [Part 3](#part-3)
+- [Part 3 - PowerShell](#part-3---powershell)
+    - [Create RefDisks](#create-refdisks)
+        - [Sysprep](#sysprep)
+        - [Windows Server 2019](#windows-server-2019)
+        - [Windows 10 Pro](#windows-10-pro)
+        - [Giggan](#giggan)
+    - [Create a new VM with PowerShell](#create-a-new-vm-with-powershell)
+    - [Add new user with PowerShell](#add-new-user-with-powershell)
+    - [Add random user with PowerShell](#add-random-user-with-powershell)
 - [Part 4](#part-4)
-- [](#)
-- [](#)
-- [](#)
+- [Optional](#optional)
 
 # Part 1
 
@@ -92,280 +93,175 @@ So I only install the role **"Hyper-V Manger"** on GIGGAN.
 
 ![](img/giggan/server-info.png)
 
-I use a tool from Sysinternals that Microsoft has
+I use a tool from SysInternals that Microsoft has
 available [here](https://docs.microsoft.com/en-us/sysinternals/downloads/bginfo) that displays the Server information to
 the right in the image above.
 
 ## Network
 
 All VMs will run on their own privat network, so they don't interfere with my regular network. This forces me to create
-2 virtual networks in the "Virtual Switch Manager" on GIGGAN. I will call them:
+2 virtual networks in the "Virtual Switch Manager" on GIGGAN.
 
-- WAN (Internet Access)
-- LAN (VM network)
+[Configuration here](network)
 
-The names are used according to my LAB-environments perspective!
+# Windows Server DC1
 
-I could just shield of the network since it's a LAB-environment, but I need internet access for [part 4](#part-4) in
-this assignment.
+The server that will be domain controller.
 
-![](img/giggan/virtual-switches.png)
+[Configuration here](dsve-dc1)
 
-## Router VM
+## Windows 10
 
-Since I need a router to be able to access the internet on my LAB-environment I start by creating it first. I'll
-Use [OPNsense](https://opnsense.org/) as router software.
+Windows machine that will be joined to the domain.
 
-1. Settings for Router:
-    - Name: OPNsense
-    - Generation 1 for compatibility reasons (don't work on Gen2)
-    - Startup memory: 2048 MB
-    - Add WAN network
-    - Virtual hard disk get standard settings (Location `G:\Virtual Hard Disks\`)
-    - Install from ISO (OPNsense-21.1-OpenSSL-dvd-amd64.iso)
-    - Finish
+[Configuration here](dsve-cl1)
 
-2. Open Settings for "OPNsense" and change:
-    - Change to 2 cores
-    - Add LAN network
+# Part 3 - PowerShell
 
-3. Start VM:
-    - Start from iso
-    - log in with
-        - user: `installer`
-        - password: `opnsense`
-        - To start installation and follow on-screen instructions
-    - log in with
-        - user: `root`
-        - password: `your choosen password during setup`
-    - Connect WAN and LAN network-ports to the correct interface
-        - `1) Assign interfaces`
-        - `2) Set interface IP address`
-        - Result:  
-          ![](img/opnsense/logged-in-screen.png)
+## Create RefDisks
 
-    - WAN network gets ip from my real router on my network
-    - LAN network IP is set static to `192.168.0.1`
-    - When we install our other machines on the LAN network we will be able to connect to `192.168.0.1` to administrate
-      the router through a webb interface.
+### Sysprep
 
-## Windows Server DC1
-
-### Create DSVE-DC1 VM
-
-1. Settings for Domain Controller:
-    - Name: DSVE-DC1
-    - Generation 2
-    - Startup memory: 4096 MB
-    - Add LAN network
-    - Virtual hard disk get standard settings (Location `G:\Virtual Hard Disks\`)
-    - Install from ISO (Windows Server 2019
-      17763.737.190906-2324.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso)
-    - Finish
-
-2. Open Settings for "OPNsense" and change:
-    - Change to 4 cores
-
-3. Start VM:
-    - Start from iso (Pictures from my Windows Server 2016 installation, but it's the same process for Server 2019)
-    - ![Step 1](img/dsve-dc1/windows-installation/step1.png)
-    - ![Step 2](img/dsve-dc1/windows-installation/step2.png)
-    - ![Step 3](img/dsve-dc1/windows-installation/step3_data_center_gui.png)
-    - ![Step 4](img/dsve-dc1/windows-installation/step4.png)
-    - ![Step 5](img/dsve-dc1/windows-installation/step5.png)
-    - ![Step 6](img/dsve-dc1/windows-installation/step6.png)
-    - ![Step 7](img/dsve-dc1/windows-installation/step7.png)
-    - ![Step 8](img/dsve-dc1/windows-installation/step8.png)
-    - ![Step 9](img/dsve-dc1/windows-installation/step9.png)
-    - ![Step 10](img/dsve-dc1/windows-installation/step10.png)
-    - ![Step 11](img/dsve-dc1/windows-installation/step11.png)
-    - ![Step 12](img/dsve-dc1/windows-installation/step12.png)
-    - ![Step 13](img/dsve-dc1/windows-installation/step13.png)
-    - ![Step 14](img/dsve-dc1/windows-installation/step14.png)
-
-### Install the role Domain Controller
-
-1. Add new Role Active Directory Domain Controller
-
-2. Deploy the server with the setting for the domain which can be seen in the PowerShell-script below
+Install a VM and install it as usual, then open CMD as Administrator and type:
 
 ```powershell
-#
-# Windows PowerShell script for AD DS Deployment
-#
-
-Import-Module ADDSDeployment
-Install-ADDSForest `
--CreateDnsDelegation:$false `
--DatabasePath "C: \Windows \NTDS" `
--DomainMode "WinThreshold" `
--DomainName "ad.dsve.se" `
--DomainNetbiosName "DSVE" `
--ForestMode "WinThreshold" `
--InstallDns:$true `
--LogPath "C: \Windows\NTDS" `
--NoRebootOnCompletion:$false `
--SysvolPath "C: \Windows \SYSVOL" `
--Force: Strue
+cd C:\Windows\System32\Sysprep\
+sysprep
+#alt
+./sysprep
 ```
 
-![](img/dsve-dc1/domain-controller/dsve-dc1.png)
-![](img/dsve-dc1/domain-controller/dsve-dc1-local-manger.png)
+### Windows Server 2019
 
-3. Restart
+![](img/giggan/sysprep-1.png)
+![](img/giggan/sysprep-2.png)
 
-### Create users
+### Windows 10 Pro
 
-Here I will use a PowerShell-script to change the structure in "Active Directory Users and Computers" under Tools menu.
+![](img/giggan/sysprep-3.png)
 
-Standard view:
+### Giggan
 
-![](img/dsve-dc1/domain-controller/active-directory-users-and-computers.png)
+Export the VMs
+
+![](img/giggan/export-vm-1.png)
+
+Rename the file with today's date and move to RefDisks.
+
+![](img/giggan/export-vm-2.png)
+
+![](img/giggan/export-vm-3.png)
+
+![](img/giggan/export-vm-4.png)
+
+## Create a new VM with PowerShell
+
+Copy an existing Virtual Hard Drive, create a new Windows Server 2019 VM and start it:
 
 ```powershell
-$ParentDomain = "DC=AD,DC=DSVE,DC=SE"
-$DomainName = "DSVE"
+ $VMName = "DSVE-DC2"
+ $RefDisk = "F:\WindowsServer2019DS_Ref_210326.vhdx"
+ $VMPath = "G:\Virtual Hard Disks\$VMName.vhdx"
+ $VMMemorySize = 4096MB
+ $VMProcCount = 4
 
-# Create Domain OU
-New-ADOrganizationalUnit -Name $DomainName -Path $ParentDomain -ProtectedFromAccidentalDeletion $True
+ Copy-Item $RefDisk -Destination $VMPath
 
-# Create Computer Containers
-New-ADOrganizationalUnit -Name Computers -Path "OU=$DomainName,$ParentDomain" -ProtectedFromAccidentalDeletion $True
-
-New-ADOrganizationalUnit -Name Clients -Path "OU=Computers,OU=$DomainName,$ParentDomain" -ProtectedFromAccidentalDeletion $True
-New-ADOrganizationalUnit -Name New -Path "OU=Computers,OU=$DomainName,$ParentDomain" -ProtectedFromAccidentalDeletion $True
-New-ADOrganizationalUnit -Name Servers -Path "OU=Computers,OU=$DomainName,$ParentDomain" -ProtectedFromAccidentalDeletion $True
-
-# Create User Container
-New-ADOrganizationalUnit -Name Users -Path $( "OU=$DomainName,$ParentDomain" ) -ProtectedFromAccidentalDeletion $True
-New-ADOrganizationalUnit -Name HQ -Path $( "OU=Users,OU=$DomainName,$ParentDomain" ) -ProtectedFromAccidentalDeletion $True
-New-ADOrganizationalUnit -Name ResourceGroups -Path $( "OU=Users,OU=$DomainName,$ParentDomain" ) -ProtectedFromAccidentalDeletion $True
-
-# Create Service Account Container
-New-ADOrganizationalUnit -Name "ServiceAccounts" -Path "OU=$DomainName,$ParentDomain" -ProtectedFromAccidentalDeletion $True
-
-# Create Security Groups Container
-New-ADOrganizationalUnit -Name "SecurityGroups" -Path "OU=$DomainName,$ParentDomain" -ProtectedFromAccidentalDeletion $True
-
-# Create Admins Container
-New-ADOrganizationalUnit -Name "Admins" -Path "OU=$DomainName,$ParentDomain" -ProtectedFromAccidentalDeletion $True
+ $VM = New-VM -Name $VMName -MemoryStartupBytes $VMMemorySize -VHDPath $VMPath -Generation 2 -SwitchName LAN
+ $VM | Set-VMProcessor -Count $VMProcCount
+ $VM | Start-VM
 ```
 
-![](img/dsve-dc1/domain-controller/add-adstructure.png)
+Copy an existing Virtual Hard Drive, create a new Windows 10 Pro VM and start it:
 
-Add random users
+```powershell
+ $VMName = "DSVE-CL2"
+ $RefDisk = "F:\Windows10Pro_Ref_210326.vhdx"
+ $VMPath = "G:\Virtual Hard Disks\$VMName.vhdx"
+ $VMMemorySize = 4096MB
+ $VMProcCount = 4
+
+ Copy-Item $RefDisk -Destination $VMPath
+
+ $VM = New-VM -Name $VMName -MemoryStartupBytes $VMMemorySize -VHDPath $VMPath -Generation 2 -SwitchName LAN
+ $VM | Set-VMProcessor -Count $VMProcCount
+ $VM | Start-VM
+```
+
+I create 2 more Windows Servers 2019 and one more Windows 10 Pro machine:
+
+- DSVE-DC2 (Server)
+- DSVE-DC3 (Server)
+- DSVE-CL2 (Windows 10)
+
+#### Result
+
+![](img/giggan/powershell-1.png)
+
+## Add new user with PowerShell
+
+```powershell
+$FirstName = "Bengt"
+$LastName = "Bengtsson"
+$Domain = "ad.dsve.se"
+
+New-ADUser `
+-DisplayName "$FirstName $LastName" `
+-Name "$FirstName $LastName" `
+-GivenName "$FirstName" `
+-Surname "$LastName" `
+-SamAccountName "$FirstName.$LastName".ToLower() `
+-UserPrincipalName "$FirstName.$LastName@$Domain" `
+-AccountPassword(Read-Host -AsSecureString "Input Password") `
+-Enabled $true `
+-ChangePasswordAtLogon $true
+
+Add-ADGroupMember -Identity Marketing -Members davdav
+```
+
+## Add random user with PowerShell
 
 ```powershell
 $Names = (Invoke-RestMethod -Uri "http://names.drycodes.com/10?nameOptions=boy_names").split("_")
 $FirstName = $Names[0]
 $Lastname = $Names[1]
+$Domain = "ad.dsve.se"
 
-Write "$FirstName $Lastname"
-```
+New-ADUser `
+-DisplayName "$FirstName $LastName" `
+-Name "$FirstName $LastName" `
+-GivenName "$FirstName" `
+-Surname "$LastName" `
+-SamAccountName "$FirstName.$LastName".ToLower() `
+-UserPrincipalName "$FirstName.$LastName@$Domain" `
+-AccountPassword(Read-Host -AsSecureString "Input Password") `
+-Enabled $true `
+-ChangePasswordAtLogon $true
 
-## Windows 10
-
-1. Settings for Windows 10:
-    - Name: DSVE-CL1-WIN10
-    - Generation 2
-    - Startup memory: 4096 MB
-    - Add LAN network
-    - Virtual hard disk get standard settings (Location `G:\Virtual Hard Disks\`)
-    - Install from ISO (Win10_20H2_v2_EnglishInternational_x64.iso)
-    - Finish
-
-2. Open Settings for "OPNsense" and change:
-    - Change to 4 cores
-
-3. Start VM:
-    - Install Windows and make a standard installation with Windows 10 Pro
-    - Create an offline user
-    - Set static IP settings
-    - Join Domain
-   
-![](img/dsve-cl1-win10/clean_install.png)
-![](img/dsve-cl1-win10/domain-join-1.png)
-![](img/dsve-cl1-win10/domain-join-2.png)
-![](img/dsve-cl1-win10/domain-join-3.png)
-![](img/dsve-cl1-win10/domain-join-4.png)
-![](img/dsve-cl1-win10/domain-join-5.png)
-![](img/dsve-cl1-win10/domain-join-6.png)
-![](img/dsve-cl1-win10/domain-join-7.png)
-![](img/dsve-cl1-win10/domain-join-8.png)
-![](img/dsve-cl1-win10/domain-join-9.png)
-![](img/dsve-cl1-win10/domain-join-10.png)
-![](img/dsve-cl1-win10/domain-join-11.png)
-
-# Part 3
-
-Add new user with PowerShell
-
-```powershell
-
-```
-
-
-Add new VM
-
-```powershell
-$Refdisk = 'E:\Refdiskar\pfsense Ref 201109. vhdx'
-#$Refdisk = "C: Refdiskar\Windows 10 2004 Ref 201109. vhdx"
-$VHDPath = (Get-VMHost).VirtualHardDiskPath
-$VMName = "pfsense-FakeInternet"
-
-if ($VHDPath.Substring($VHDPath.Length - 1, 1) -notmatch "\\")
-{
-    $VHDPath = $VHDPath + "\"
-}
-
-(SPite deserterwans a firman action sale a y contain ye A to or ted -
-13 else
-SVHDx
-SVM
-New-VHD -Path $VHDPath$VMName.vhdx -Differencing -ParentPath SRefdisk
-New-VM -Name $VMName -MemoryStartupBytes 512MB -SwitchName "Default Switch" -VHDPath S(SVHDX. Path) -Generation 2
-SVM | Set-VM -AutomaticcheckpointsEnabled Sfalse -ProcessorCount
-#SVM | Start-VM
-vmconnect. exe Senv: computername SVM. Name
+Add-ADGroupMember -Identity Marketing -Members davdav
 ```
 
 # Part 4
 
-## Create Domain
+## Nano Server
 
-Create new VM
+Set up Nano Server in a container under Hyper-V on your previously created Windows Server machine.
 
-- Name "LAB-DC1"
-- Windows Server 2019
-- Domain Controller
-- DNS Server
-- Active Directory
-- DHCP Server
+- Install the roles required for this.
+- Explain how you proceeded.
+- Is it possible to automate this with PowerShell as well?
+    - Yes since I listed the commands in my report
 
-### Domänkontroller scriptet
+## Create DSVE-ContainerHost01 VM
 
+[Configuration here](nano-server)
 
+# Optional
 
+Guides by me:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [Active Directory](../ActiveDirectory)
+- [Installation](../Installation)
+- [Network](../Network)
+- [PowerShell](../PowerShell)
+- [Servers](../Servers)
