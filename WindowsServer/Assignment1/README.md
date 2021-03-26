@@ -64,6 +64,10 @@
 
 # Part 2
 
+## Mockup of my solution
+
+![](img/drawio_diagram.png)
+
 ## Create a Windows Server
 
 Set up a Windows Server ~~(2016)~~ (2019), this will act as a domain controller. Install the necessary extensions /
