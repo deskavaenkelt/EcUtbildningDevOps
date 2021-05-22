@@ -1,6 +1,6 @@
 # Python REST API with Flask, Docker, MongoDB and AWS
 
-# Depricated
+# Deprecated
 Check out [this git repo instead](https://github.com/deskavaenkelt/PythonRestApi)
 
 ## Requirements

@@ -95,3 +95,11 @@ venv/
 __pycache__
 
 Extras/Python REST API/PythonRestApi_CrudFlaskMysql/.env
+
+CiCd/DiscordBot/bin/
+
+CiCd/DiscordBot/lib/
+
+CiCd/webSiteInPython/lib/
+
+Extras/DiscordBot/bot-env/
