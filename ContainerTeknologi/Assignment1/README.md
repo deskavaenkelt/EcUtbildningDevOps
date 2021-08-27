@@ -76,3 +76,6 @@ Koden finns på : [GitHub](https://github.com/AlexisFlach/my-cool-portfolio.git)
     - 2.1 Kortare rapport
     - 2.2 Skärmbild på den virtuella miljön där man kan se att applikationen körs och syns i en webbläsare
 
+### Report
+
+[Report Dokument](Report.md)
