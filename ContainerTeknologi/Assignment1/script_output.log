@@ -1,0 +1,311 @@
+#!/bin/bash
+lars@ca1:~$ wget https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/ContainerTeknologi/Assignment1/assignment1vmware.sh
+--2021-09-01 20:49:02--  https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/ContainerTeknologi/Assignment1/assignment1vmware.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1481 (1.4K) [text/plain]
+Saving to: ‘assignment1vmware.sh’
+
+assignment1vmware.sh         100%[=============================================>]   1.45K  --.-KB/s    in 0s
+
+2021-09-01 20:49:02 (21.3 MB/s) - ‘assignment1vmware.sh’ saved [1481/1481]
+
+lars@ca1:~$ chmod +x assignment1vmware.sh
+lars@ca1:~$ sh assignment1vmware.sh
+---------------------------
+Purge other docker versions
+---------------------------
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Package 'docker-engine' is not installed, so not removed
+Package 'docker' is not installed, so not removed
+Package 'containerd' is not installed, so not removed
+Package 'runc' is not installed, so not removed
+Package 'docker.io' is not installed, so not removed
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+1 not fully installed or removed.
+After this operation, 0 B of additional disk space will be used.
+Setting up docker-ce (5:20.10.8~3-0~ubuntu-hirsute) ...
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+ /etc/needrestart/restart.d/dbus.service
+ systemctl restart systemd-logind.service unattended-upgrades.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ lars @ session #2: login[952]
+ lars @ user manager service: systemd[1607]
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following packages will be REMOVED:
+  containerd.io* docker-ce* docker-ce-cli*
+0 upgraded, 0 newly installed, 3 to remove and 0 not upgraded.
+After this operation, 371 MB disk space will be freed.
+(Reading database ... 75060 files and directories currently installed.)
+Removing docker-ce (5:20.10.8~3-0~ubuntu-hirsute) ...
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+Removing containerd.io (1.4.9-1) ...
+Removing docker-ce-cli (5:20.10.8~3-0~ubuntu-hirsute) ...
+Processing triggers for man-db (2.9.4-2) ...
+(Reading database ... 74842 files and directories currently installed.)
+Purging configuration files for docker-ce (5:20.10.8~3-0~ubuntu-hirsute) ...
+Purging configuration files for containerd.io (1.4.9-1) ...
+---------------------------------
+Update with latest packages
+---------------------------------
+Hit:1 http://se.archive.ubuntu.com/ubuntu hirsute InRelease
+Get:2 http://se.archive.ubuntu.com/ubuntu hirsute-updates InRelease [109 kB]
+Hit:3 https://download.docker.com/linux/ubuntu hirsute InRelease
+Get:4 http://se.archive.ubuntu.com/ubuntu hirsute-backports InRelease [101 kB]
+Get:5 http://se.archive.ubuntu.com/ubuntu hirsute-security InRelease [101 kB]
+Fetched 310 kB in 0s (834 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+---------------------------------------------
+Install docker
+---------------------------------------------
+# Executing docker install script, commit: 93d2499759296ac1f9c510605fef85052a2c32be
+Warning: the "docker" command appears to already exist on this system.
+
+If you already have Docker installed, this script can cause trouble, which is
+why we're displaying this warning and provide the opportunity to cancel the
+installation.
+
+If you installed the current Docker package using this script and are using it
+again to update Docker, you can safely ignore this message.
+
+You may press Ctrl+C now to abort this script.
++ sleep 20
++ sudo -E sh -c apt-get update -qq >/dev/null
++ sudo -E sh -c DEBIAN_FRONTEND=noninteractive apt-get install -y -qq apt-transport-https ca-certificates curl >/dev/null
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
++ sudo -E sh -c curl -fsSL "https://download.docker.com/linux/ubuntu/gpg" | gpg --dearmor --yes -o /usr/share/keyrings/docker-archive-keyring.gpg
++ sudo -E sh -c echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu hirsute stable" > /etc/apt/sources.list.d/docker.list
++ sudo -E sh -c apt-get update -qq >/dev/null
++ sudo -E sh -c DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends  docker-ce-cli docker-scan-plugin docker-ce >/dev/null
++ version_gte 20.10
++ [ -z  ]
++ return 0
++ sudo -E sh -c DEBIAN_FRONTEND=noninteractive apt-get install -y -qq docker-ce-rootless-extras >/dev/null
++ sudo -E sh -c docker version
+Client: Docker Engine - Community
+ Version:           20.10.8
+ API version:       1.41
+ Go version:        go1.16.6
+ Git commit:        3967b7d
+ Built:             Fri Jul 30 19:53:57 2021
+ OS/Arch:           linux/amd64
+ Context:           default
+ Experimental:      true
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          20.10.8
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.16.6
+  Git commit:       75249d8
+  Built:            Fri Jul 30 19:52:06 2021
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.4.9
+  GitCommit:        e25210fe30a0a703442421b0f60afac609f950a3
+ runc:
+  Version:          1.0.1
+  GitCommit:        v1.0.1-0-g4144b63
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+
+================================================================================
+
+To run Docker as a non-privileged user, consider setting up the
+Docker daemon in rootless mode for your user:
+
+    dockerd-rootless-setuptool.sh install
+
+Visit https://docs.docker.com/go/rootless/ to learn about rootless mode.
+
+
+To run the Docker daemon as a fully privileged service, but granting non-root
+users access, refer to https://docs.docker.com/go/daemon-access/
+
+WARNING: Access to the remote API on a privileged Docker daemon is equivalent
+         to root access on the host. Refer to the 'Docker daemon attack surface'
+         documentation for details: https://docs.docker.com/go/attack-surface/
+
+================================================================================
+
+--------------------------
+Clone assignment test repo
+--------------------------
+--------------------------
+Build docker image
+--------------------------
+Sending build context to Docker daemon  58.37kB
+Step 1/6 : FROM python:3.8-slim-buster
+3.8-slim-buster: Pulling from library/python
+e1acddbe380c: Pull complete
+258c0c873be2: Pull complete
+5c473d53b499: Pull complete
+837ed7ae1748: Pull complete
+b0bb62e51ee8: Pull complete
+Digest: sha256:5e275a12c3288c60879f691cf725546bd44bc8bb6593048a2fdf011fff2e20ca
+Status: Downloaded newer image for python:3.8-slim-buster
+ ---> 227dd3ab92b2
+Step 2/6 : WORKDIR /app
+ ---> Running in 94154c49dd76
+Removing intermediate container 94154c49dd76
+ ---> 692781a2d98e
+Step 3/6 : COPY requirements.txt requirements.txt
+ ---> 8facf0c38f23
+Step 4/6 : RUN pip3 install -r requirements.txt
+ ---> Running in 2b3dca5d0a2e
+Collecting Django==3.2.6
+  Downloading Django-3.2.6-py3-none-any.whl (7.9 MB)
+Collecting sqlparse>=0.2.2
+  Downloading sqlparse-0.4.1-py3-none-any.whl (42 kB)
+Collecting pytz
+  Downloading pytz-2021.1-py2.py3-none-any.whl (510 kB)
+Collecting asgiref<4,>=3.3.2
+  Downloading asgiref-3.4.1-py3-none-any.whl (25 kB)
+Installing collected packages: sqlparse, pytz, asgiref, Django
+Successfully installed Django-3.2.6 asgiref-3.4.1 pytz-2021.1 sqlparse-0.4.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+Removing intermediate container 2b3dca5d0a2e
+ ---> 57634fa33080
+Step 5/6 : COPY . .
+ ---> b02133d54b57
+Step 6/6 : CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8000" ]
+ ---> Running in 38fb0b715e6d
+Removing intermediate container 38fb0b715e6d
+ ---> 862f39c113a5
+Successfully built 862f39c113a5
+Successfully tagged devimage:latest
+--------------------------
+Run docker image detached
+--------------------------
+382eb0a593cbababfc1535c3ae7210b36ada392f0a76f9bd8f0cb1f3777c7aeb
+--------------------------
+Show running containers
+--------------------------
+CONTAINER ID   IMAGE      COMMAND                  CREATED                  STATUS                  PORTS                                       NAMES
+382eb0a593cb   devimage   "python3 manage.py r…"   Less than a second ago   Up Less than a second   0.0.0.0:8000->8000/tcp, :::8000->8000/tcp   modest_germain
+--------------------------
+Get index.html
+--------------------------
+--2021-09-01 20:52:38--  http://0.0.0.0:8000/
+Connecting to 0.0.0.0:8000... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2021-09-01 20:52:39--  (try: 2)  http://0.0.0.0:8000/
+Connecting to 0.0.0.0:8000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3127 (3.1K) [text/html]
+Saving to: ‘index.html’
+
+--------------------------
+Show content of index.html
+--------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="container">
+
+    <nav class="navbar navbar-expand-md navbar-light">
+        <!-- <a href="/" class="navbar-brand">Min Portfolio</a> -->
+        <!-- Om man istället vill ha en logga -->
+        <a href="/" class="navbar-brand">
+            <img class="d-inline-block align-top" src="/static/img/logo.png" alt="portolio logo" width="100"
+                 height="100">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
+                aria-controls="#toggleMobileMenu" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="toggleMobileMenu">
+            <ul class="navbar-nav ms-auto text-center">
+                <li><a class="nav-link" href="/">Home</a></li>
+                <li><a class="nav-link" href="/about">About</a></li>
+                <li><a class="nav-link" href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <section class="hero row d-flex justify-content-center page-80">
+        <div class="row d-flex flex-sm-row-reverse justify-content-center my-auto">
+            <div class="col-md text-center">
+                <img src="/static/img/undraw_Online_party_re_7t6g.svg" alt="hero-image" height="250"/>
+            </div>
+            <div class="col-md">
+                <div class="text-center justify-content-center p-5">
+                    <h2 class="hero-title">Min goa portfolio</h2>
+                    <p class="hero-text">En gubbe i <span class="red">mängden</span></p>
+                    <a type="button" class="btn btn-light" href="/about">Läs mer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="text-center text-lg-start bg-light fixed-bottom">
+        <section
+                class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+        >
+            <div class="me-5 d-none d-lg-block">
+                <span>Sociala länkar:</span>
+            </div>
+            <div>
+                <a href="" class="me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/alexis-flach"
+                   class="me-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="me-4">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

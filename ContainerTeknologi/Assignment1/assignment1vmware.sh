@@ -2,17 +2,17 @@
 
 # This file is for VMWare environment
 
-echo ---------------------------
+echo ---------------------------------------------
 echo Purge other docker versions
-echo ---------------------------
+echo ---------------------------------------------
 sudo apt-get remove docker docker-engine docker.io containerd runc -y
 sudo apt-get purge docker-ce docker-ce-cli containerd.io -y
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 
-echo ---------------------------------
+echo ---------------------------------------------
 echo Update with latest packages
-echo ---------------------------------
+echo ---------------------------------------------
 sudo apt update && sudo apt upgrade -y
 
 echo ---------------------------------------------
@@ -21,34 +21,34 @@ echo ---------------------------------------------
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
-echo --------------------------
+echo ---------------------------------------------
 echo Clone assignment test repo
-echo --------------------------
+echo ---------------------------------------------
 git clone https://github.com/AlexisFlach/my-cool-portfolio.git
 cd my-cool-portfolio/django
 
-echo --------------------------
+echo ---------------------------------------------
 echo Build docker image
-echo --------------------------
+echo ---------------------------------------------
 sudo docker build -f Dockerfile.dev -t devimage .
 
 
-echo --------------------------
+echo ---------------------------------------------
 echo Run docker image detached
-echo --------------------------
+echo ---------------------------------------------
 sudo docker run -d -p 8000:8000 devimage
 
-echo --------------------------
+echo ---------------------------------------------
 echo Show running containers
-echo --------------------------
+echo ---------------------------------------------
 sudo docker container ls
 
-echo --------------------------
+echo ---------------------------------------------
 echo Get index.html
-echo --------------------------
+echo ---------------------------------------------
 wget 0.0.0.0:8000
 
-echo --------------------------
+echo ---------------------------------------------
 echo Show content of index.html
-echo --------------------------
+echo ---------------------------------------------
 cat index.html

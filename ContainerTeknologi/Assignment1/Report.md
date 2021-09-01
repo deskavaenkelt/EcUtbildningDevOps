@@ -50,8 +50,11 @@
 6. Make in executable `chmod +x assignment1vmware.sh`
 7. Run script `sh assignment1vmware.sh`
 8. Enter `root password`
+9. [Complete log is here](script_output.log)
 
-Resultat från output:
+### Resultat från output:
+
+#### HTML via `cat` in console
 
 ```html
 <!DOCTYPE html>
@@ -137,4 +140,7 @@ Resultat från output:
 </body>
 </html>
 ```
+
+#### Resultat as screenshot
+
 ![resulting web page](img/website.png)
