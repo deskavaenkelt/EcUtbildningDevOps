@@ -30,4 +30,12 @@
 
 1. The benefits of using containers instead of VMs ar that each container is running as a service and do not require 
    any virtual hardware assigned to it. It also allows us to rebuild an application instead of upgrading it.
-2. 
+2. You could sa that an image is a recipe that you download and when you start or run the image it will transform 
+   into a container so a container is an image that is running.
+3. Problems that are solved with containers is that you can run a container without allocating recourses to it like 
+   memory, cpu and harddrive.
+4. Docker is a set of Platform as a Service (PaaS) products that use OS-level virtualization to deliver software in 
+   packages called containers.
+5. A Dockerfile is a convenient automatic recipe to make a container without doing all the configuration manually.
+
+## Part 2 Practical Application
