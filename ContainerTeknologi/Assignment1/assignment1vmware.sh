@@ -29,3 +29,5 @@ sudo docker run -d -p 8000:8000 devimage
 sudo docker container ls
 
 wget 0.0.0.0:8000
+
+cat index.html
