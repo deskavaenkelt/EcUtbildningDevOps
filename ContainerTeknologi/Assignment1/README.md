@@ -56,7 +56,7 @@ __För att påvisa att du har kunskaper inom ämnet kan du med fördel använda 
 
 ### Del 2, Praktisk tillämpning
 
-__Tillämpa virtualisering med hjälp av viritual machines__
+__Tillämpa virtualisering med hjälp av virtual machines__
 
 Din uppgift består av att starta upp en applikation, med kod hämtad från Github, i en virtuell miljö.
 

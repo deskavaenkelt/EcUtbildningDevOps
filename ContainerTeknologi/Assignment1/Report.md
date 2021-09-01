@@ -44,11 +44,15 @@
     - 32GB HDD
 2. Standard installation lock ip-address to `192.168.1.193`, enable OpenSSH
 3. Restart
-4. Run script below
+4. Login with SSH `ssh lars@172.16.192.4` in my case.
+5. Run the script `wget https://raw.githubusercontent.com/deskavaenkelt/EcUtbildningDevOps/master/ContainerTeknologi/Assignment1/assignment1vmware.sh`
+6. Make in executable `chmod +x assignment1vmware.sh`
+7. Run script `sh assignment1vmware.sh`
+8. Enter `root password`
 
 https://kb.vmware.com/s/article/1022525#install_vmware_tools_in_ubuntu_server_with_command_line_interface
 
 ```shell
-sudo apt update && sudo upgrade -y
-sudo apt-get install qemu-guest-agent
+# Docker daemon in rootless mode for your user
+dockerd-rootless-setuptool.sh install
 ```

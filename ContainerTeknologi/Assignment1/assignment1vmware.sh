@@ -14,9 +14,12 @@ git clone https://github.com/AlexisFlach/my-cool-portfolio.git
 cd my-cool-portfolio/django
 
 # Build docker image
-docker build -f Dockerfile.dev -t devimage .
+sudo docker build -f Dockerfile.dev -t devimage .
 
 # Run docker image detached
-docker run -d devimage
+sudo docker run -d -p 8000:8000 devimage
 
-lars
+# show running containers
+sudo docker container ls
+
+wget 0.0.0.0:8000
