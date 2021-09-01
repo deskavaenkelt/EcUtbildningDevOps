@@ -2,6 +2,12 @@
 
 # This file is for VMWare environment
 
+# Purge other docker versions
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get purge docker-ce docker-ce-cli containerd.io
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+
 # Update with latest packages
 sudo apt update && sudo apt upgrade -y
 
