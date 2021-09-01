@@ -3,7 +3,7 @@
 # This file is for VMWare environment
 
 # Update with latest packages
-sudo apt update && sudo upgrade -y
+sudo apt update && sudo apt upgrade -y
 
 # Install docker
 curl -fsSL https://get.docker.com -o get-docker.sh
