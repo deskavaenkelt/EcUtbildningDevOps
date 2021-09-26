@@ -59,7 +59,7 @@ docker create
 
 Beskriv samtliga steg så utförligt som möjligt.
 
-1.3 Docker Compose
+### 1.3 Docker Compose
 
 Förklara rad för rad följande i docker-compose fil:
 
@@ -360,5 +360,16 @@ Skicka med rapport där du går igenom steg för steg hur du har tänkt och vilk
 
 Skicka helst in alla rapporter i ett och samma dokument.
 
+# Redovisning
 
+## Del 1, Teoretiskt
 
+[länk](GitHub/EcUtbildningDevOps/ContainerTeknologi/Assignment2/part1/README.md)
+
+## Del 2, Praktiskt
+
+[länk](GitHub/EcUtbildningDevOps/ContainerTeknologi/Assignment2/part2/README.md)
+
+## Del 3, Projekt
+
+[länk](part3.md)

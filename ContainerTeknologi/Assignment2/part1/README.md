@@ -1,5 +1,13 @@
 # Part 1
 
+## Table of Contents
+
+- [Docker and container technology](#docker-and-container-technology)
+- [Docker client](#docker-client)
+- [Docker Compose](#docker-compose)
+
+## Docker and container technology
+
 ### What is Docker (platform)?
 
 Docker is an open source containerization platform. It enables developers to package applications into
@@ -59,3 +67,97 @@ image. But, since we didn’t have that on our machine, that image needed to be 
 
 After the image was downloaded, we copied in our application and used yarn/npm to install our application’s
 dependencies. The CMD directive specifies the default command to run when starting a container from this image.
+
+## Docker client
+
+Go through the life cycle of a container using Docker Commands.
+
+Docker Container Lifecycle Management: Create, Run, Pause, Stop And Delete. Docker is a containerization platform for
+developing, shipping, and running applications inside containers. We can deploy many containers simultaneously on a
+given host.
+
+![](img/lifecycle.png)
+
+### Create a container
+
+```shell
+$ docker create --name <container name> <image name>
+```
+
+### Start a container
+
+```shell
+$ docker start <container name>
+```
+
+### Run a container
+
+```shell
+$ docker run -it --name <container name> <image name>
+```
+
+### Pause a container
+
+```shell
+$ docker pause <container name>
+```
+
+### Stop a container
+
+```shell
+$ docker stop <container name>
+```
+
+### Delete a container
+
+```shell
+$ docker rm <container name>
+```
+
+### Kill a container
+
+```shell
+$ docker kill <container name>
+```
+
+## Docker Compose
+
+Explain line by line the following in the docker-compose file:
+
+```yml
+version: "3.8"                            # Specify version of Docker-compose
+services:                                 # Specifies the services we want to run
+  flask:                                  # Name of the first service
+    container_name: flaskcontainer        # Assigns name to container
+    build:                                # Docker-compose builds from here
+      context: ./app                      # Path to Dockerfile 
+      dockerfile: Dockerfile.dev          # Specifies the Dev Dockerfile
+    ports:                                # Which ports to operate on
+      - "5000:5000"                       # Maps external ports to internal ports
+    depends_on:                           # This dependency must be built first
+      - db
+    networks:                             # Specifies the networks to operate on
+      - flask_app_net
+  db:                                     # Name of the second service
+      container_name: dbcontainer         # Name of the second service
+      image: postgres:latest              # Pull latest Postgres image from DockerHub
+      restart: always                     # Specifies the db to restart if for som reasons it stops
+      environment:                        # Variabels for db environment
+        POSTGRES_DB: mydb                 # Name on db
+        POSTGRES_PASSWORD: postgres       # Password for db
+        POSTGRES_USER: postgres           # Username for db
+      volumes:                            # link local files to db (external to container)
+        - postgres_data:/var/lib/postgresql/data/
+      networks:                           # Specifies the networks to operate on
+        - flask_app_net
+
+  networks:                               # Network service
+    flask_app_net:                        # Create/Use network
+      driver: bridge                      # Use "bridge-driver" for network
+
+  volumes:                                # Create local volumes
+    postgres_data: db_data_volume         # Name on local volume
+```
+
+Assume that the folder where docker-compose also has a bottle application in a folder called "app". Also based on that
+proper indentation is used.
