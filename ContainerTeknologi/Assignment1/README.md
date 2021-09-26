@@ -1,6 +1,6 @@
 # Inlämningsuppgift 1
 
-__Sista tidpunkt för inlämning:__ 5 sep 2021 23:55, 9 dagar kvar
+__Sista tidpunkt för inlämning:__ 5 sep 2021 23:55
 
 ## Inlämningsuppgift 1, Containerteknologi(docker)
 
