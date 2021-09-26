@@ -1,0 +1,55 @@
+---------------------------------------------
+run docker container
+---------------------------------------------
+[+] Building 4.2s (8/8) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                                                                                                                                                                                              0.0s
+ => => transferring dockerfile: 37B                                                                                                                                                                                                                                                                                                               0.0s
+ => [internal] load .dockerignore                                                                                                                                                                                                                                                                                                                 0.0s
+ => => transferring context: 34B                                                                                                                                                                                                                                                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-alpine3.13                                                                                                                                                                                                                                                                          0.5s
+ => [internal] load build context                                                                                                                                                                                                                                                                                                                 0.0s
+ => => transferring context: 1.27kB                                                                                                                                                                                                                                                                                                               0.0s
+ => CACHED [1/3] FROM docker.io/library/python:3.9-alpine3.13@sha256:a2708a32c5e3c8284ad54e97fabc772b17cfd417ddd97c8467ecd72aeeb55e1f                                                                                                                                                                                                             0.0s
+ => [2/3] COPY . .                                                                                                                                                                                                                                                                                                                                0.0s
+ => [3/3] RUN pip3 install -r requirements.txt                                                                                                                                                                                                                                                                                                    3.6s
+ => exporting to image                                                                                                                                                                                                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                                                                                                                                                                                                           0.1s
+ => => writing image sha256:ea413fc739590695c93f5446249bf72e790da2a51c43929bf0f6155120dea033                                                                                                                                                                                                                                                      0.0s
+ => => naming to docker.io/deskavaenkelt/flask-app                                                                                                                                                                                                                                                                                                0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+f01aa7852fad92d0d24e6db1e8cfc1d751902cda311f1295488489c64f933c1e
+---------------------------------------------
+Give server time to be able to respond
+---------------------------------------------
+---------------------------------------------
+print response from server
+---------------------------------------------
+<h1>Hello World</h1>
+---------------------------------------------
+stop docker container
+---------------------------------------------
+dsve-flask-app
+---------------------------------------------
+Push to DockerHub
+---------------------------------------------
+Using default tag: latest
+The push refers to repository [docker.io/deskavaenkelt/flask-app]
+cbf3b4887aa2: Pushed
+50b5567ccaaa: Pushed
+2252a3a26be5: Layer already exists
+578eca84881f: Layer already exists
+0b6c280ab13e: Layer already exists
+f1593da89979: Layer already exists
+f1dd685eb59e: Layer already exists
+latest: digest: sha256:13e8fc54a596c6c60a2d13f8a1e92f6ad653c9fc7740cd77b3acc8e626cb6e77 size: 1786
+---------------------------------------------
+Cleanup/remove container
+---------------------------------------------
+dsve-flask-app
+Untagged: deskavaenkelt/flask-app:latest
+Untagged: deskavaenkelt/flask-app@sha256:13e8fc54a596c6c60a2d13f8a1e92f6ad653c9fc7740cd77b3acc8e626cb6e77
+Deleted: sha256:ea413fc739590695c93f5446249bf72e790da2a51c43929bf0f6155120dea033
+---------------------------------------------
+Done
+---------------------------------------------
