@@ -196,10 +196,10 @@ Din uppgift slutar docker inte där.
 
 Ditt mål är att kunna utföra följande steg:
 
-1. Bygg en image utfifrån din Dockerfile
+1. Bygg en image utifrån din Dockerfile
 2. Starta en container utifrån image. Ditt mål är att
     1. När du går in på localhost:80 ska "Hello World" synas
-    2. När du gör en ändring i index.html ska det reflekteras i browsern.
+    2. När du gör en ändring i index.html s`ka det reflekteras i browsern.
     3. Containern ska köras i bakgrunden. Alltså när du kör dit docker run-kommando ska du kunna använda samma flik som
        du körde kommandot i.
 
