@@ -156,7 +156,7 @@ services:                                 # Specifies the services we want to ru
       driver: bridge                      # Use "bridge-driver" for network
 
   volumes:                                # Create local volumes
-    postgres_data: db_data_volume         # Name on local volume
+    postgres_data:                        # Name on local volume
 ```
 
 Assume that the folder where docker-compose also has a bottle application in a folder called "app". Also based on that
