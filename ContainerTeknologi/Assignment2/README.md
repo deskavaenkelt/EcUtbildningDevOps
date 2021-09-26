@@ -63,36 +63,38 @@ Beskriv samtliga steg så utförligt som möjligt.
 
 Förklara rad för rad följande i docker-compose fil:
 
-```dockerfile
+```yml
 version: "3.8"
 services:
-flask:
-container_name: flaskcontainer
-build:
-    context: ./app
-    dockerfile: Dockerfile.dev
-ports:
-    - "5000:5000"
-  depends_on:
-    - db
-  networks:
-    - flask_app_net
+  flask:
+    container_name: flaskcontainer
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    networks:
+      - flask_app_net
   db:
-  container_name: dbcontainer
-  image: postgres:latest
-  restart: always
-  environment:
+    container_name: dbcontainer
+    image: postgres:latest
+    restart: always
+    environment:
       POSTGRES_DB: mydb
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-  volumes:
-    - postgres_data:/var/lib/postgresql/data/
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - flask_app_net
+
   networks:
-    - flask_app_net
-networks:  
-flask_app_net:
-    driver: bridge
-volumes:
+    flask_app_net:
+      driver: bridge
+
+  volumes:
     postgres_data:
 ```
 
@@ -217,6 +219,7 @@ Efter att du har kört
 ```shell
 docker-compose up
 ```
+
 Ska du i en annan terminal-flik köra
 
 ```shell
@@ -295,7 +298,6 @@ docker-compose up
 
 Öppna ett ny flik och kör återigen:
 
-
 ```shell
 docker exec -it mysqlcontainer sh
 ```
@@ -303,7 +305,6 @@ docker exec -it mysqlcontainer sh
 ```shell
 mysql -u iamtheuser -pmypassword
 ```
-
 
 Kör:
 
@@ -313,7 +314,9 @@ USE mydb;
 ```
 
 ```mysql
-SELECT title FROM books WHERE id=1;
+SELECT title
+FROM books
+WHERE id = 1;
 #> 
 # +-------+
 # | title |
@@ -333,7 +336,8 @@ Skriv en kort rapport där även docker-compose.yml finns med.
 
 Containerize ett project med minst 2 services, (ex front-end och db).
 
-Även om du får gå hur långt du vill med projektet exempelvis använda dig av Github Actions eller deploya projektet, så kommer projektet att bedömas efter följande kriterier:
+Även om du får gå hur långt du vill med projektet exempelvis använda dig av Github Actions eller deploya projektet, så
+kommer projektet att bedömas efter följande kriterier:
 
 - Efter genomförd kurs ska den studerande ha färdigheter i att
 - Använda Docker på ett för ändamålet effektivt sätt
