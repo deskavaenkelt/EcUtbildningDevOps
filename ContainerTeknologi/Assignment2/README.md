@@ -152,8 +152,7 @@ textthatshouldnotbeincluded
     - `docker run -p 5000:5000 <image id>`
     - och går in på `localhost:5000` ska det visas
     - "Hello World"
-
-Pusha imagen till Docker Hub. Imagen som pushas ska ha tag :1.0.
+6. Pusha imagen till Docker Hub. Imagen som pushas ska ha tag :1.0.
 
 #### Dokumentation
 
