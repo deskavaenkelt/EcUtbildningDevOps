@@ -219,3 +219,103 @@ sh multi-stage.sh
 [Result logging](console_multi_stage.log)
 
 ## Docker Compose
+
+You will now, using Docker Compose, run a container based on MySQL's official Image.
+
+[`docker-compose.yml`](compose/docker-compose.yml)
+
+```yml
+version: "3.9"
+services:
+  db:
+    container_name: mysqlcontainer
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_assignment2:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: iamtheuser
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_PASSWORD: mypassword
+volumes:
+  mysql_assignment2:
+```
+
+In CLI type:
+
+```shell
+docker-compose up -d
+docker exec -it mysqlcontainer sh
+mysql -u iamtheuser -pmypassword
+```
+
+```mysql
+# First database run
+USE mydb;
+
+CREATE TABLE books
+(
+    id    INT         NOT NULL AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO books(title)
+VALUES ("jack");
+
+SELECT *
+FROM books;
+```
+
+```shell
+^CGracefully stopping... (press Ctrl+C again to force)
+Killing mysqlcontainer  ... done
+docker-compose down
+>
+Removing mysqlcontainer ... done
+Removing network mysql_default
+```
+
+`docker-compose up`
+
+![](img/mysql1.png)
+
+Enter in other Terminal
+
+![](img/mysql2.png)
+
+`docker-compose down`
+
+![](img/mysql3.png)
+
+Run again (detached this time): 
+
+```shell
+docker-compose up -d
+docker exec -it mysqlcontainer sh
+mysql -u iamtheuser -pmypassword
+```
+
+```mysql
+# Second database run
+USE mydb;
+
+SELECT title
+FROM books
+WHERE id = 1;
+```
+
+Second database run
+
+![](img/mysql4.png)
+
+Output from database in IntelliJ IDEA
+
+![](img/mysql_output.png)
+
+[File with MySQL commands](compose/mysql.sql)
+
+
+
