@@ -4,8 +4,7 @@
 
 - [Flask App](#flask-app)
 - [Multi-stage Build](#multi-stage-build)
-- [](#)
-- [](#)
+- [Docker Compose](#docker-compose)
 
 ## Flask App
 
@@ -179,8 +178,8 @@ COPY --from=builder /app/build /usr/share/nginx/html
 In CLI run the following commands
 
 ```shell
-docker build -t progressivecoder/docker-react-app .
-docker run -p 8080:80 progressivecoder/docker-react-app
+docker build -t deskavaenkelt/docker-react-app .
+docker run -p 8080:80 deskavaenkelt/docker-react-app
 ```
 
 All this can be reduced to a single `.sh-file` if we create a `Dockerfile_for_multi_stage` template and copy to the 
